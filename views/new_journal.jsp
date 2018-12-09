@@ -1,35 +1,21 @@
-
 <div class="pcoded-content">
     <!-- [ breadcrumb ] start -->
     <div class="page-header card">
         <div class="row align-items-end">
             <div class="col-lg-8 col-lg-offset-2">
                 <div class="page-header-title">
-                    <i class="feather icon-pie-chart bg-c-blue"></i>
+                    <i class="feather icon-clipboard bg-c-blue"></i>
                     <div class="d-inline">
-                        <h5>New Account</h5>
+                        <h5>New Journal</h5>
                     </div>
                 </div>
             </div>
-             <div class="col-lg-4">
-                <div class="page-header-breadcrumb">
-                    <ul class=" breadcrumb breadcrumb-title">
-                        <li class="breadcrumb-item">
-                            <a href="index.jsp?request=home"><i class="feather icon-home"></i></a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="#!">Chart Of Account</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#!">New Account</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            
         </div>
     </div>
     <!-- [ breadcrumb ] end -->
  <div class="pcoded-inner-content">
-   <div class="col-md-8 col-lg-offset-3" style="margin-left: 15%;">
+   <div class="col-md-8 col-md-offset-3" style="margin-left: 15%;">
        <div class="card">
             <div class="card-header">
              
@@ -47,20 +33,15 @@
             <div class="card-block">
      <form >
         <div class="form-group row">
-               <label class="col-sm-3 col-form-label">Book</label>
+               <label class="col-sm-3 col-form-label">Memo</label>
                <div class="col-sm-9">
-                   <select name="select" class="form-control form-control-sm" id="book">
-                       <option value="" disabled="true">[ SELECT ]</option>
-                       <option value=""> New</option>
-                       <option value="2">Book 2</option>
-                       <option value="3">Book 3</option>
-                       <option value="4">Book 4</option>                       
-                   </select>
+                   <textarea class="form-control form-control-sm">                      
+                   </textarea>
                </div>
            </div>
-            <div class="form-group row" id="global_acc" style="display: none;">
-                 <label class="col-sm-3 col-form-label">Global Account</label>
-                 <div class="col-sm-9">
+            <div class="form-group row" id="global_ac">
+                 <label class="col-sm-3 col-form-label">Account</label>
+                 <div class="col-sm-3">
                      <select name="select" class="form-control form-control-sm">
                          <option value="" disabled="true">[ SELECT ]</option>
                          <option value=""> New</option>
@@ -69,42 +50,64 @@
                          <option value="">Account   4</option>                       
                      </select>
                  </div>
-             </div> 
-            <div class="input_fields_wrap">
                  
-            </div> 
-          <div class="form-group row" id="acc_name" style="display: none;">
-            <label class="col-sm-3 col-form-label" for="acc_name">Sub Acc Name <span class="required">*</span>
+                    <label class="col-sm-3 col-form-label" for="acc_name">Amount <span class="required">*</span>
+                     </label>
+                     <div class="col-sm-3 ">                                               
+                        <div class="input-group">
+                            <input type="text" name="amount" class="form-control form-control-sm" onpress="return isNumberKey(event)" >                     
+                        </div> 
+                     </div>
+                
+                 <div class="col-sm-3">
+                     <div class="radio radiofill radio-primary radio-inline">
+                        <label>
+                          <input type="radio" name="radio" checked="checked">
+                          <i class="helper"></i>Credit
+                        </label>
+                      </div>
+                     <div class="radio radiofill radio-primary radio-inline">
+                        <label>
+                          <input type="radio" name="radio" checked="checked">
+                          <i class="helper"></i>Debit
+                        </label>
+                      </div>
+                 </div>
+             </div> 
+         
+          <div class="form-group row" id="acc_nam" >
+            <label class="col-sm-3 col-form-label" for="acc_name">Amount <span class="required">*</span>
              </label>
              <div class="col-sm-9 ">                                               
                 <div class="input-group">
-                 <input type="text" id="contactid" name="acc_name" required="required" class="form-control form-control-sm">
-                     <span class="input-group-btn">
-                          <button type="button" class="btn btn-sm btn-primary add_field_button">Sub</button>
-                      </span>
-               </div> 
+                    <input type="text" name="amount" class="form-control form-control-sm" onpress="return isNumberKey(event)" >                     
+                </div> 
              </div>
            </div> 
          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Reconciliation</label>
-                <div class="col-sm-9">
+            <label class="col-sm-3 col-form-label">Proof</label>
+                <div class="col-sm-4">
                     <div class="checkbox-fade fade-in-primary">
                         <label>
-                          <input type="checkbox" value="">
+                          <input type="checkbox" value="" id="proof">
                           <span class="cr">
                             <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-                          </span>
+                          </span><span>If not, Leave this field </span>
                         </label>
-                      </div>
+                     </div>
                 </div>
+            <div class="col-sm-5" id="proof_doc" style="display: non;">
+                    <input name="proof_doc" type="file"/>
+                </div>            
             </div>
-         <div class="form-group" >
-             <div class="col-sm-3">
-                 <label class="" style="display: none"></label>
-             </div>
-            <div class="col-md-6 col-sm-12  col-sm-offset-4" style="margin-left: 35%;">                
-                <button type="submit" class="btn btn-primary btn-sm pull-right" style="margin-left: 15px;">Submit</button>
-                <button class="btn btn-danger btn-sm "  type="button">Cancel</button>					       
+         
+            <div class="form-group" >
+                <div class="col-sm-3">
+                    <label class="" style="display: none"></label>
+                </div>
+            <div class="col-sm-9 col-xs-12 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary btn-sm pull-right" style="margin-left: 15px;">Save</button>
+                <button class="btn btn-danger btn-sm pull-right"  type="button">Cancel</button>						       
                 
             </div>
         </div>
@@ -117,7 +120,32 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- <script>
+
+<script type="text/javascript">
+  document.getElementById('proof').addEventListener('change', function(){
+       
+        var proof_doc = $("#proof_doc");
+        
+    checkbox.change(function() {
+   
+    if (document.getElementById('proof').is(':checked')) {
+      // Show the hidden fields.
+      document.getElementById('proof_doc').style.display = style;
+    } else {
+      
+      document.getElementById('proof').style.display = none;
+    }
+    });
+</script>
+
+<script type="text/javascript">
+     
+ function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}    
     $(document).ready(function() {
     var max_fields      = 4; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
@@ -127,10 +155,9 @@
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="form-group row"><label class="col-sm-3 col-form-label">Account Name</label>\
-                 <div class="col-sm-9 ">\
-                     <select name="select" class="form-control form-control-sm">\
-                         <option value="" disabled>[ SELECT ]</option> <option value="">Account 2</option><option value="">Account 3</option> <option value="">Account   4</option> </select> </div> <a href="#" style="margin-left: 27%;" class="remove_field btn-mini btn-warning">Remove</a></div>'); //add form
+            $(wrapper).append('<div><input name="sub_account" type="text" onkeyup="update()" class="form-control col-md-12" required="required"/>\
+			 <input type="hidden">\
+		<a href="#" class="remove_field">Remove</a></div>'); //add form
         }
     });
    
