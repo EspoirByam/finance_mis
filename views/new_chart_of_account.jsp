@@ -8,6 +8,7 @@
                     <i class="feather icon-pie-chart bg-c-blue"></i>
                     <div class="d-inline">
                         <h5>New Account</h5>
+                        <span class="text-default"></span>
                     </div>
                 </div>
             </div>
@@ -45,28 +46,29 @@
                 </div>
             </div>
             <div class="card-block">
-     <form >
+                
+       <form id="newAcc" method="" >
         <div class="form-group row">
                <label class="col-sm-3 col-form-label">Book</label>
                <div class="col-sm-9">
                    <select name="select" class="form-control form-control-sm" id="book">
-                       <option value="" disabled="true">[ SELECT ]</option>
-                       <option value=""> New</option>
+                       <option class="text-default">[ SELECT ]</option>
+                       <option data-toggle="modal" data-target="#newBook"> New</option>
                        <option value="2">Book 2</option>
                        <option value="3">Book 3</option>
                        <option value="4">Book 4</option>                       
                    </select>
                </div>
            </div>
-            <div class="form-group row" id="global_acc" style="display: none;">
+            <div class="form-group row" id="global_acc" style="display: none;" >
                  <label class="col-sm-3 col-form-label">Global Account</label>
                  <div class="col-sm-9">
                      <select name="select" class="form-control form-control-sm">
-                         <option value="" disabled="true">[ SELECT ]</option>
-                         <option value=""> New</option>
+                         <option class="text-default">[ SELECT ]</option>
+                         <option data-toggle="modal" data-target="newAccount"> New</option>
                          <option value="">Account 2</option>
                          <option value="">Account 3</option>
-                         <option value="">Account   4</option>                       
+                         <option value="">Account 4</option>                       
                      </select>
                  </div>
              </div> 
@@ -103,13 +105,14 @@
                  <label class="" style="display: none"></label>
              </div>
             <div class="col-md-6 col-sm-12  col-sm-offset-4" style="margin-left: 35%;">                
-                <button type="submit" class="btn btn-primary btn-sm pull-right" style="margin-left: 15px;">Submit</button>
-                <button class="btn btn-danger btn-sm "  type="button">Cancel</button>					       
+                <button type="submit" name="" id="submit" class="btn btn-primary btn-sm pull-right" style="margin-left: 15px;">Save</button>
+                <button class="btn btn-danger btn-sm" onclick="resetFunction()"  type="button">Cancel</button>					       
                 
             </div>
         </div>
          
      </form>
+                
        </div>
    </div>
     </div>
@@ -117,7 +120,8 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- <script>
+ 
+<script>
     $(document).ready(function() {
     var max_fields      = 4; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
@@ -129,15 +133,23 @@
             x++; //text box increment
             $(wrapper).append('<div class="form-group row"><label class="col-sm-3 col-form-label">Account Name</label>\
                  <div class="col-sm-9 ">\
-                     <select name="select" class="form-control form-control-sm">\
+                     <select name="select" id="select1" class="form-control form-control-sm">\
                          <option value="" disabled>[ SELECT ]</option> <option value="">Account 2</option><option value="">Account 3</option> <option value="">Account   4</option> </select> </div> <a href="#" style="margin-left: 27%;" class="remove_field btn-mini btn-warning">Remove</a></div>'); //add form
+        
+        var acc ="submit".concat(x);
+        var selec = "select".concat(x);
+        document.getElementById('submit').setAttribute("name", acc);
+        document.getElementById('select1').setAttribute("name", selec);
+        //alert(document.getElementById('select1').attributes["name"].value);
         }
+        
     });
    
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').remove(); x--;
         $(document).ready(function() {update();});
     })
+    
     
 });
 
@@ -146,4 +158,74 @@
         document.getElementById('global_acc').style.display = style;
         document.getElementById('acc_name').style.display = style;
     });
+       
  </script>
+<script type="text/javascript">
+    function resetFunction() {
+    document.getElementById("newAcc").reset();
+}
+
+
+function myFunction() {
+    var x = document.getElementById("book");
+    var option = document.createElement("option");
+    option.text = document.getElementById("book_name").value;
+    x.add(option);
+    $('#newBook').modal('hide');
+    
+     function notify(message, type){
+        $.growl({
+            message: message
+        },{
+            type: type,
+            allow_dismiss: false,
+            label: 'Cancel',
+            className: 'btn-xs btn-inverse',
+            placement: {
+                from: 'bottom',
+                align: 'right'
+            },
+            delay: 2500,
+            animate: {
+                    enter: 'animated fadeInRight',
+                    exit: 'animated fadeOutRight'
+            },
+            offset: {
+                x: 30,
+                y: 30
+            }
+        });
+    };
+    
+        notify('Book saved succefully ', 'primary');
+}
+</script>
+ 
+<!-- New Finance Book Modal-->
+<div class="modal fade" tabindex="-1" id="newBook" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Finance Book</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+           <form >
+             <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Name </label>
+                  <div class="col-sm-9">
+                      <input class="form-control form-control-sm" name="book_name" id="book_name" required="required">
+                  </div>
+              </div>             
+
+        </form>
+            </div>
+            <div class="modal-footer">
+                 <button class="btn btn-danger btn-sm"  type="button" data-dismiss="modal">Cancel</button>
+                 <button type="submit" class="btn btn-primary btn-sm" onclick="myFunction()" style="margin-left: 75%;">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
