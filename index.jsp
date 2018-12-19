@@ -323,9 +323,7 @@
     
     <!-- notification js -->
 <script type="text/javascript" src="files/assets/js/bootstrap-growl.min.js"></script>
-<script src="files/assets/js/pcoded.min.js"></script>
-<script src="files/assets/js/vertical/vertical-layout.min.js"></script>
-<script src="files/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
@@ -348,7 +346,7 @@
             label: 'Cancel',
             className: 'btn-xs btn-inverse',
             placement: {
-                from: 'botton',
+                from: 'bottom',
                 align: 'right'
             },
             delay: 3500,
