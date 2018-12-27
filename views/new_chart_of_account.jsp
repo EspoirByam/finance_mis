@@ -114,7 +114,7 @@
                                 <div class="input-group">
                                     <input type="text" id="sub_account" name="acc_name" required="required" class="form-control form-control-sm">
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-sm btn-primary add_field_button" onclick="showAc(document.getElementById('globalaccount').value)" >Sub</button>
+                                        <button type="button" id="sub_btn" class="btn btn-sm btn-primary add_field_button" onclick="showAc(document.getElementById('globalaccount').value)" >Sub</button>
                                     </span>
                                 </div> 
                             </div>
@@ -183,12 +183,17 @@
                 
                 $(wrapper).append('<div class="form-group row"><label class="col-sm-3 col-form-label">Account Name</label>\
                  <div class="col-sm-9">\
-                     <select name="select' + x + '" id="select1" class="form-control form-control-sm" >\
+                     <select name="select' + x + '" id="select1' + '" class="form-control form-control-sm" >\
                      </select> </div> <a href="#" style="margin-left: 27%;" class="remove_field btn-mini btn-warning">Remove</a></div>'); //add form
                 
+                
                 var acc = "submit".concat(x);
+                var sub = "sub_btn".concat(x);   //assigning the concatinated value to var sub
+                $('#sub_btn').attr('id', sub);  //updating the sub_btn ID into an sub_btn+index(x)
                 document.getElementById('submit').setAttribute("name", acc);
-                //alert(document.getElementById('select1').attributes["name"].value);
+                                               
+                    //alert(sub);
+                   //alert(x);
             }
             
         });
