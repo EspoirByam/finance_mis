@@ -1,3 +1,28 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="core.*" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.ResultSet"%>
+<%
+    Map Cond_getUserUnit=null;
+    
+    try
+    {
+    db con= new db();
+    con.connection();
+    Connection conn = con.getcon();
+    
+    String tb_finance_book = "finance_book";
+    
+    Map Cond_getAllBook = null;
+    Cond_getAllBook = new HashMap();
+    %>
+
+
+
 
 <div class="pcoded-content">
     <!-- [ breadcrumb ] start -->
@@ -47,30 +72,38 @@
                 </div>
                 <div class="card-block">
 
-                    <form id="newAcc" method="" >
+                    <form id="newAcc">
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Book</label>
                             <div class="col-sm-9">
-                                <select name="select" class="form-control form-control-sm" id="book">
+                                <select name="select" onchange="showMainAcc(this.value)" class="form-control form-control-sm" id="book">
                                     <option class="text-default">[ SELECT ]</option>
                                     <option data-toggle="modal" data-target="#newBook"> New</option>
-                                    <option value="2">Book 2</option>
-                                    <option value="3">Book 3</option>
-                                    <option value="4">Book 4</option>                       
+                                    <%
+                                        Cond_getAllBook.put("select","id,name");
+                                        
+                                        ResultSet resgetAllBook = con.getrows(tb_finance_book, Cond_getAllBook);
+                                        
+                                        while(resgetAllBook.next())
+                                        {
+                                           %>
+                                           <option value="<%=resgetAllBook.getInt(1)%>"><%=resgetAllBook.getString(2)%></option>
+                                           <%
+                                        
+                                        }
+                                    
+                                        }catch(ClassNotFoundException e)
+                                        {
+                                           out.print(e);
+                                        }
+                                    
+                                    %>                  
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row" id="global_acc" style="display: none">
-                            <label class="col-sm-3 col-form-label">Global Account</label>
-                            <div class="col-sm-9">
-                                <select name="select" class="form-control form-control-sm">
-                                    <option class="text-default">[ SELECT ]</option>
-                                    <option data-toggle="modal" data-target="newAccount"> New</option>
-                                    <option value="">Account 2</option>
-                                    <option value="">Account 3</option>
-                                    <option value="">Account 4</option>                       
-                                </select>
-                            </div>
+                           
+                            
                         </div> 
                         <div class="input_fields_wrap">
 
@@ -79,9 +112,9 @@
                             <label class="col-sm-3 col-form-label" for="acc_name">Sub Acc Name </label>
                             <div class="col-sm-9 ">                                               
                                 <div class="input-group">
-                                    <input type="text" id="contactid" name="acc_name" required="required" class="form-control form-control-sm">
+                                    <input type="text" id="sub_account" name="acc_name" required="required" class="form-control form-control-sm">
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-sm btn-primary add_field_button">Sub</button>
+                                        <button type="button" class="btn btn-sm btn-primary add_field_button" onclick="showAc(document.getElementById('globalaccount').value)" >Sub</button>
                                     </span>
                                 </div> 
                             </div>
@@ -91,7 +124,7 @@
                             <div class="col-sm-9">
                                 <div class="checkbox-fade fade-in-primary">
                                     <label>
-                                        <input type="checkbox" value="">
+                                        <input id="reconciliation" type="checkbox" value="">
                                         <span class="cr">
                                             <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
                                         </span>
@@ -104,7 +137,7 @@
                                 <label class="" style="display: none"></label>
                             </div>
                             <div class="col-md-6 col-sm-12  col-sm-offset-4" style="margin-left: 35%;">                
-                                <button type="submit" name="" id="submit" class="btn btn-primary btn-sm pull-right" style="margin-left: 15px;">Save</button>
+                                <button name="" type="button" onclick="save_chat_ofAccount(this.name)" id="submit" class="btn btn-primary btn-sm pull-right" style="margin-left: 15px;">Save</button>
                                 <button class="btn btn-danger btn-sm" onclick="resetFunction()"  type="button">Cancel</button>					       
 
                             </div>
@@ -125,7 +158,7 @@
         $('#book').change(function () {
 
             var item = $(this, 'option:selected').val();
-            if (item == 2) {
+            if (item !=0 ) {
                     
             $('#acc_name').show(1);
             $('#global_acc').show(1);
@@ -137,21 +170,21 @@
         
 </script> 
 
-
 <script>
     $(document).ready(function () {
-        var max_fields = 4; //maximum input boxes allowed
+        var max_fields = 3; //maximum input boxes allowed
         var wrapper = $(".input_fields_wrap"); //Fields wrapper
         var add_button = $(".add_field_button"); //Add button ID   
-        var x = 1; //initlal text box count
+        var x = 0; //initlal text box count
         $(add_button).click(function (e) { //on add input button click
             e.preventDefault();
             if (x < max_fields) { //max input box allowed
                 x++; //text box increment
+                
                 $(wrapper).append('<div class="form-group row"><label class="col-sm-3 col-form-label">Account Name</label>\
                  <div class="col-sm-9">\
-                     <select name="select' + x + '" id="select1" class="form-control form-control-sm">\
-                         <option value="" disabled>[ SELECT ]</option> <option value="">Account 2</option><option value="">Account 3</option> <option value="">Account   4</option> </select> </div> <a href="#" style="margin-left: 27%;" class="remove_field btn-mini btn-warning">Remove</a></div>'); //add form
+                     <select name="select' + x + '" id="select1" class="form-control form-control-sm" >\
+                     </select> </div> <a href="#" style="margin-left: 27%;" class="remove_field btn-mini btn-warning">Remove</a></div>'); //add form
                 
                 var acc = "submit".concat(x);
                 document.getElementById('submit').setAttribute("name", acc);
@@ -167,7 +200,7 @@
             $(document).ready(function () {
                 update();
             });
-        })
+        });
         
         
     });
@@ -222,6 +255,8 @@
     }
 </script>
 
+
+
 <!-- New Finance Book Modal-->
 <div class="modal fade" tabindex="-1" id="newBook" role="dialog">
     <div class="modal-dialog" role="document">
@@ -250,3 +285,54 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+  function save_chat_ofAccount(btnaction){  
+    var book = document.getElementById('book').value;
+    var globalaccount = document.getElementById('globalaccount').value;
+    var sub_account = document.getElementById('sub_account').value;
+    var reconciliation = document.getElementById('reconciliation');
+    
+    var reconciliation_value = false;
+    
+    if(reconciliation.checked)
+    {
+        reconciliation_value = true;
+    }
+    else
+    {
+        reconciliation_value = false;
+    }
+//alert(reconciliation);
+    
+    
+    
+//    alert(reconciliation);
+  /*to initialize the http request*/
+       var xhttp = new XMLHttpRequest();
+
+      /* to check the status  and the sate of the request  after executing the request for displaying a execution msg*/
+ xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      resetFunction();
+    
+    var msg = this.responseText;
+     var ms=msg.trim();
+    
+    if(ms == 'success')
+    {
+     notify("Operation Done Successfully!", 'success');   
+    }
+    else 
+    {
+      notify("Operation Failled, Try Later!", 'danger');  
+    }
+    }
+  };
+  /*open the http request with the Method and the sever page*/
+  xhttp.open("POST", "class/chart_of_account_controller.jsp", true);
+  /*to define the Request header*/ 
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");//
+  /*to define the parameters to be held in the request*/
+  xhttp.send("action=" + btnaction + "&book=" + book+"&globalaccount="+globalaccount+"&sub_account="+sub_account+"&reconciliation_value="+reconciliation_value);
+    } 
+</script>
