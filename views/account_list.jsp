@@ -40,20 +40,16 @@ try
      <div class="card">
        <div class="card-block"> 
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs md-tabs header-pannel" role="tablist" style="font-family: aroma !important; font-size: 15px !important;">
+          <ul class="nav nav-tabs md-tabs header-pannel" role="tablist" style="font-family: aroma !important; font-size: 15px !important;">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home7" role="tab" style="font-color: #0000"><i class="fa fa-gg"></i> Balanace Sheet</a>
-                    <div class="slide"></div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#profile7" role="tab"><i class="icofont icofont-ui-user "></i> Income Statement</a>
-                    <div class="slide"></div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#messages7" role="tab"><i class="icofont icofont-ui-message"></i> Chart Of Account</a>
-                    <div class="slide"></div>
+                    <a class="nav-link active" data-toggle="tab" href="#home7" role="tab" style="font-color: #0000"><i class="fa fa-gg" style="margin-left: 5px;"></i> Balance Sheet Account List</a>
                 </li>
                 
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#profile7" role="tab"><i class="fa fa-money"></i> Income Statement Account List</a>
+                <!--<div class="slide"></div> -->
+                </li>              
+              
             </ul>
             <!-- Tab panes -->
             <div class="tab-content card-block">
@@ -99,8 +95,7 @@ try
                                                 <td>$<%=res_getAllSubAccount.getDouble(4)%></td>
                                                 <td><%=debCred%></td>
                                                 <td>                                        
-                                                    <a href="#!" title="View" class="waves-effect md-trigger" data-modal="modal-12"><i class="icon feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                                    <a href="#!" title="Update" data-toggle="modal" data-target="#large-Modal" ><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                                                  <a href="#!" title="Update" data-toggle="modal" data-target="#large-Modal" ><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
                                                     <a href="#!" title="Delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
                                                 </td>
                                             </tr>
@@ -202,22 +197,25 @@ try
                     </table>
                     
                     
-                </div>
-                <div class="tab-pane" id="messages7" role="tabpanel">
-                    <p class="m-0">3. This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis natoque penatibus et magnis dis.....</p>
-                </div>
+                </div>              
             </div>
        </div>
 
     </div>
 </div>
     
-<div class="md-modal md-effect-1" id="modal-12">
-    <div class="md-content">
-        <h3><span class="text-default text-center">Account Detail</span></h3>
-        <div>
-             <div class="table-responsive dt-responsive">
-                <table id="simpletable" class="table table-hover table-bordered table-xs col-sm-10">
+
+<div class="modal fade" id="modal-12" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Account Detail</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                  <table id="simpletable" class="table table-hover table-bordered table-xs col-sm-10">
                     <thead>
                         <tr>
                             <th>Account Name</th>
@@ -228,32 +226,34 @@ try
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">100124311</th>
+                            <th scope="row">5400024311</th>
                             <td>Salary</td>
                             <td>200,000,000</td>
                             <td>Credit</td>
                            
                         </tr>
                         <tr>
-                            <th scope="row">1001244112</th>
+                            <th scope="row">5400044112</th>
                             <td>Expenses</td>
                             <td>300,000,000</td>
                             <td>Debit</td>
                         </tr>
                         <tr>
-                            <th scope="row">1001245113</th>
+                            <th scope="row">5400045113</th>
                             <td>Loan</td>
                             <td>122,332,000</td>
                             <td>Credit</td>
                         </tr>
                     </tbody>
-                </table>
-                    </div>   
-            <button type="button" class="btn btn-danger btn-mini waves-effect md-close pull-right">Close</button>
+                </table>   
+            </div>
+            <div class="modal-footer">
+                  <button class="btn btn-danger btn-sm "  type="button" data-dismiss="modal">Cancel</button>
+                 <button type="submit" class="btn btn-primary btn-sm" style="margin-left: 75%;">Save</button>
+            </div>
         </div>
     </div>
-</div>
-
+</div>    
 <!--    
 <button type="button" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#large-Modal">Large</button> -->
   
@@ -261,14 +261,66 @@ try
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Modal title</h4>
+                <h4 class="modal-title">Update Account</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <h5>Default Modal</h5>
-                <p>This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+                 <form >
+        <div class="form-group row">
+               <label class="col-sm-3 col-form-label">Book</label>
+               <div class="col-sm-9">
+                   <select name="select" class="form-control form-control-sm" id="book">
+                       <option value="" disabled="true">[ SELECT ]</option>
+                       <option value=""> New</option>
+                       <option value="2">Book 2</option>
+                       <option value="3">Book 3</option>
+                       <option value="4">Book 4</option>                       
+                   </select>
+               </div>
+           </div>
+            <div class="form-group row" id="global_acc" >
+                 <label class="col-sm-3 col-form-label">Global Account</label>
+                 <div class="col-sm-9">
+                     <select name="select" class="form-control form-control-sm">
+                         <option value="" disabled="true">[ SELECT ]</option>
+                         <option value=""> New</option>
+                         <option value="">Account 2</option>
+                         <option value="">Account 3</option>
+                         <option value="">Account   4</option>                       
+                     </select>
+                 </div>
+             </div> 
+            <div class="input_fields_wrap">
+                 
+            </div> 
+          <div class="form-group row" id="acc_name" >
+            <label class="col-sm-3 col-form-label" for="acc_name">Sub Acc Name <span class="required">*</span>
+             </label>
+             <div class="col-sm-9 ">                                               
+                <div class="input-group">
+                 <input type="text" id="contactid" name="acc_name" required="required" class="form-control form-control-sm">
+                     <span class="input-group-btn">
+                          <button type="button" class="btn btn-sm btn-primary add_field_button">Sub</button>
+                      </span>
+               </div> 
+             </div>
+           </div> 
+         <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Reconciliation</label>
+                <div class="col-sm-9">
+                    <div class="checkbox-fade fade-in-primary">
+                        <label>
+                          <input type="checkbox" value="">
+                          <span class="cr">
+                            <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                          </span>
+                        </label>
+                      </div>
+                </div>
+            </div>         
+     </form>               
             </div>
             <div class="modal-footer">
                   <button class="btn btn-danger btn-sm "  type="button" data-dismiss="modal">Cancel</button>
@@ -286,4 +338,46 @@ try
         .collapse('toggle')
 })
 </script>
+
+
+<script>
+    $(document).ready(function() {
+    $('#demo11').on('hidden.bs.collapse', function () {
+        console.log('triggered');      
+        $('#level13').collapse('hide');
+    });
+});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script>
+    $(document).ready(function() {
+    var max_fields      = 4; //maximum input boxes allowed
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button      = $(".add_field_button"); //Add button ID   
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div class="form-group row"><label class="col-sm-3 col-form-label">Account Name</label>\
+                 <div class="col-sm-9 ">\
+                     <select name="select" class="form-control form-control-sm">\
+                         <option value="" disabled>[ SELECT ]</option> <option value="">Account 2</option><option value="">Account 3</option> <option value="">Account   4</option> </select> </div> <a href="#" style="margin-left: 27%;" class="remove_field btn-mini btn-warning">Remove</a></div>'); //add form
+        }
+    });
+   
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+        $(document).ready(function() {update();});
+    })
+    
+});
+
+        document.getElementById('book').addEventListener('change', function () {
+        var style = this.value == 2 ? 'block' : 'none';
+        document.getElementById('global_acc').style.display = style;
+        document.getElementById('acc_name').style.display = style;
+    });
+ </script>
+    
     
