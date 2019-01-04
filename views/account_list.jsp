@@ -96,7 +96,7 @@ try
                                                 <td><%=debCred%></td>
                                                 <td>                                        
                                                   <a href="#!" title="Update" data-toggle="modal" data-target="#large-Modal" ><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                                    <a href="#!" title="Delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
+                                                    <a href="#!" class="deleteConfirm" title="Delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
                                                 </td>
                                             </tr>
                                             <%
@@ -267,60 +267,61 @@ try
                 </button>
             </div>
             <div class="modal-body">
-                 <form >
-        <div class="form-group row">
-               <label class="col-sm-3 col-form-label">Book</label>
-               <div class="col-sm-9">
-                   <select name="select" class="form-control form-control-sm" id="book">
-                       <option value="" disabled="true">[ SELECT ]</option>
-                       <option value=""> New</option>
-                       <option value="2">Book 2</option>
-                       <option value="3">Book 3</option>
-                       <option value="4">Book 4</option>                       
-                   </select>
-               </div>
-           </div>
-            <div class="form-group row" id="global_acc" >
-                 <label class="col-sm-3 col-form-label">Global Account</label>
-                 <div class="col-sm-9">
-                     <select name="select" class="form-control form-control-sm">
-                         <option value="" disabled="true">[ SELECT ]</option>
-                         <option value=""> New</option>
-                         <option value="">Account 2</option>
-                         <option value="">Account 3</option>
-                         <option value="">Account   4</option>                       
-                     </select>
-                 </div>
-             </div> 
-            <div class="input_fields_wrap">
-                 
-            </div> 
-          <div class="form-group row" id="acc_name" >
-            <label class="col-sm-3 col-form-label" for="acc_name">Sub Acc Name <span class="required">*</span>
-             </label>
-             <div class="col-sm-9 ">                                               
-                <div class="input-group">
-                 <input type="text" id="contactid" name="acc_name" required="required" class="form-control form-control-sm">
-                     <span class="input-group-btn">
-                          <button type="button" class="btn btn-sm btn-primary add_field_button">Sub</button>
-                      </span>
-               </div> 
-             </div>
-           </div> 
-         <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Reconciliation</label>
-                <div class="col-sm-9">
-                    <div class="checkbox-fade fade-in-primary">
-                        <label>
-                          <input type="checkbox" value="">
-                          <span class="cr">
-                            <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-                          </span>
-                        </label>
-                      </div>
-                </div>
-            </div>         
-     </form>               
+  <form id="newAcc" method="" >
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Book</label>
+                            <div class="col-sm-8">
+                                <select name="select" class="form-control form-control-sm" id="book">
+                                    <option class="text-default">[ SELECT ]</option>
+                                    <option data-toggle="modal" data-target="#newBook"> New</option>
+                                    <option value="2">Book 2</option>
+                                    <option value="3">Book 3</option>
+                                    <option value="4">Book 4</option>                       
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="global_acc" style="display: none">
+                            <label class="col-sm-4 col-form-label">Global Account</label>
+                            <div class="col-sm-8">
+                                <select name="select" class="form-control form-control-sm">
+                                    <option class="text-default">[ SELECT ]</option>
+                                    <option data-toggle="modal" data-target="newAccount"> New</option>
+                                    <option value="">Account 2</option>
+                                    <option value="">Account 3</option>
+                                    <option value="">Account 4</option>                       
+                                </select>
+                            </div>
+                        </div> 
+                        <div class="input_fields_wrap">
+
+                        </div> 
+                        <div class="form-group row" id="acc_name" style="display: none">
+                            <label class="col-sm-4 col-form-label" for="acc_name">Sub Acc Name </label>
+                            <div class="col-sm-8 ">                                               
+                                <div class="input-group">
+                                    <input type="text" id="contactid" name="acc_name" required="required" class="form-control form-control-sm">
+                                    <span class="input-group-btn">
+                                        <button type="button" id="sub_btn1" class="btn btn-sm btn-primary add_field_button">Sub</button>
+                                    </span>
+                                </div> 
+                            </div>
+                        </div> 
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Reconciliation</label>
+                            <div class="col-sm-8">
+                                <div class="checkbox-fade fade-in-primary">
+                                    <label>
+                                        <input type="checkbox" value="">
+                                        <span class="cr">
+                                            <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                       
+
+                    </form>                
             </div>
             <div class="modal-footer">
                   <button class="btn btn-danger btn-sm "  type="button" data-dismiss="modal">Cancel</button>
@@ -379,5 +380,13 @@ try
         document.getElementById('acc_name').style.display = style;
     });
  </script>
-    
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('.deleteConfirm').click(function(){
+      //todo: get confirm message from <a> tag data attribute
+    var answer = confirm('Are you sure?');
+    return answer; // answer is a boolean
+  });
+});
+</script>
     
