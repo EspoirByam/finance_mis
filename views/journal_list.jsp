@@ -1,3 +1,9 @@
+<style>
+    table{
+        font-weight: 450;
+    }
+</style>
+
 <div class="pcoded-content">
 
     <div class="pcoded-inner-content">
@@ -7,64 +13,107 @@
             <div class="card">
                 <div class="card-header">
                     <h5>Journal Entries</h5>
-                   
                 </div>
                 <div class="card-block">
+                    <div class="row">
+                    <div class="col-md-10 ml-20">
                     <div class="dt-responsive table-responsive">
-                        <table id="order-table" class="table table-striped table-bordered nowrap table-xs">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>S/N</th>
-                                    <th>Account Name</th>
-                                    <th>Debit</th>
-                                    <th>Credit</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>25/12/2018</td>
-                                    <td>45</td>
-                                    <td>
-                                        (444)Account Pay <br>
-                                        (666) Cash        <br> <br>
-                                        <b> Memo:</b> Debts paying
-                                                                            
-                                    </td>
-                                    <td>$300,000</td>
-                                    <td> <br> $320,800</td>
-                                    <td> 
-                                        <br> <br>
-                                        <a href="#!" title="Update"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                        <a href="#!" title="Delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>14/11/2018</td>
-                                    <td>32</td>
-                                     <td>
-                                        (4444) Account Pay <br>
-                                        (6666) Cash        <br>
-                                        (7777) eCash       <br><br>
-                                        <b> Memo:</b> Money Movement
-                                                                            
-                                    </td>
-                                    <td>
-                                        $150,000 <br>
-                                        $250,000
-                                    </td>
-                                    <td> <br> <br> $320,800</td>
-                                    <td>
-                                        <br> <br>
-                                        <a href="#!" title="Update"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                        <a href="#!" title="Delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
-                                    </td>
-                                </tr>
-    
-                            </tbody>
-                          
+                       <table width="750" border="2" align="center">
+                        <tr bgcolor="#CCFFCC">
+                          <td width="93" bgcolor="#CCFFCC" style="border-width: 2; padding: 2;"><p></p>
+                              <p align="center"><strong>Account No</strong></p></td>
+                          <td width="276" style="border-width: 2; padding: 2; "><div align="center"><strong>01-10-2018 / 0005</strong></div></td>
+                          <td width="73" bordercolor="#000000" bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="center"><strong>DEBIT</strong></div></td>
+                          <td width="73" bordercolor="#000000" bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="center"><strong>CREDIT</strong></div></td>
+                        </tr>
+                        <tr bgcolor="#99FFFF">
+                          <td width="93" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="center">512000</div></td>
+                          <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; ">Bank</td>
+                          <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">20 000</div></td>
+                          <td width="73" bordercolor="#FFFF99" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                        </tr>
+                        <tr  bgcolor="#99FFFF">
+                          <td width="93" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="center">101000</div></td>
+                          <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">Capital</div></td>
+                          <td width="73" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                          <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">20 000</div></td>
+                        </tr>
+                        <tr  bgcolor="#99FFFF">
+                           <td width="93" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; ">&nbsp;<p>&nbsp;</p></td>
+                           <td width="276" style="border-width: 2; padding: 2; " bgcolor="#99ffff"><div align="center"><strong>Entreprise creation</strong></div></td>
+                          <td width="73" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                          <td width="73" bordercolor="#FFFF99" bgcolor="#FFFFCC" style="border-width: 2; padding: 2;"><div align="right"></div></td>
+                        </tr>
+                      </table>
+                        <table width="750" border="2" align="center">
+                          <tr bgcolor="#CCFFCC">
+                            <td width="93" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><p></p>
+                                <p align="center">&nbsp;</p></td>
+                            <td width="276" style="border-width: 2; padding: 2; "><div align="center"><strong>02-10-2018 / 0006</strong></div></td>
+                            <td width="73" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; ">&nbsp;</td>
+                            <td width="73" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; ">&nbsp;</td>
+                          </tr>
+                          <tr bgcolor="#99FFFF">
+                            <td width="93" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="center">531000</div></td>
+                            <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; ">Cashier</td>
+                            <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">500</div></td>
+                            <td width="73" bordercolor="#FFFF99" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                          </tr>
+                          <tr bgcolor="#99FFFF">
+                            <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="center">512000</div></td>
+                            <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right"> Bank</div></td>
+                            <td width="73" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                            <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">500</div></td>
+                          </tr>
+                          <tr  bgcolor="#99FFFF">
+                           <td width="93" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; ">&nbsp;<p>&nbsp;</p></td>
+                            <td width="276" style="border-width: 2; padding: 2;" bgcolor="#99ffff"><div align="center">Bank withdrawal</div></td>
+                            <td width="73" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                            <td width="73" bordercolor="#FFFF99" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                          </tr>
                         </table>
+                     
+                       <table width="750" border="2" align="center" >
+                         <tr bordercolor="#000000" bgcolor="#99FFFF">
+                           <td width="93" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><p></p>
+                               <p align="center">&nbsp;</p></td>
+                           <td width="276" bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="center"><strong>14-10-2018 / 0007</strong></div></td>
+                           <td width="73" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; ">&nbsp;</td>
+                           <td width="73" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; ">&nbsp;</td>
+                         </tr>
+                         <tr bordercolor="#000000" bgcolor="#99FFFF">
+                           <td width="93" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="center">512000</div></td>
+                           <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; ">Banque</td>
+                           <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">4 000</div></td>
+                           <td width="73" bordercolor="#FFFF99" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                         </tr>
+                         <tr bordercolor="#000000" bgcolor="#99FFFF">
+                           <td width="93" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="center">411000</div></td>
+                           <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">Client PAUL</div></td>
+                           <td width="73" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                           <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">4 000</div></td>
+                         </tr>
+                         <tr bordercolor="#000000" bgcolor="#99FFFF">
+                             <td width="93" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; ">&nbsp;<p>&nbsp;</p></td>
+                           <td width="276" bgcolor="#99ffff" style="border-width: 2; padding: 2; "><div align="center">R&eacute;glement client PAUL. </div></td>
+                           <td width="73" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                           <td width="73" bordercolor="#FFFF99" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                         </tr>
+                       </table>
+
+                        <table width="750" border="2" align="center">
+                          <tr bordercolor="#000000" bgcolor="#99FFFF">
+                            <td width="93" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; ">&nbsp;</td>
+                            <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2;"><div align="center"><strong>TOTAL</strong></div></td>
+                            <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right" class="Style2 Style3 Style4">66 200</div></td>
+                            <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2;  "><div align="right" class="Style4">66 200</div></td>
+                          </tr>
+                        </table>
+                    </div>
+                    </div>
+                    <div class="col-md-2">                               
+                       <a class="btn btn-mini pull-left" sytle="color: white;" href="#"> <img src="images/pdf.png"/> Export</a>                 
+                    </div>
                     </div>
                 </div>
             </div>
