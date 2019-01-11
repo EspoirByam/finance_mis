@@ -67,8 +67,8 @@ try
                     <div class="col-md-10 ml-20">
                     <div class="dt-responsive table-responsive">
                            <%
-                           Cond_getJournalLineInfo.put("select", "id,memo, date,fiscalyear");
-                           ResultSet get_journalLineInfo = con.getrows(tb_finance_journal_line, Cond_getJournalLineInfo);
+                           PreparedStatement pst_getJournalLineInfo = conn.prepareStatement("select id, memo, date, fiscalyear from finance_journal_line");
+                           ResultSet get_journalLineInfo = pst_getJournalLineInfo.executeQuery();
                            String fiscal_year = "";
                            
                            String acc_name = "ACCOUNT No";
@@ -77,11 +77,9 @@ try
                            
                            while(get_journalLineInfo.next())
                            {
-                               Data_getFiscalYear.put("id", get_journalLineInfo.getInt(4));
-                               Cond_getFiscalYear.put("select","name");
-                               Cond_getFiscalYear.put("where", Data_getFiscalYear);
-                               
-                               ResultSet res_getFiscalYear = con.getrows(tb_finance_fiscal_year, Cond_getFiscalYear);
+                               PreparedStatement getFiscalYear = conn.prepareStatement("select name from finance_fiscal_year where id ='"+get_journalLineInfo.getInt(4)+"'");
+                              
+                               ResultSet res_getFiscalYear = getFiscalYear.executeQuery();
                                while(res_getFiscalYear.next())
                                {
                                    fiscal_year = res_getFiscalYear.getString(1);
@@ -99,12 +97,9 @@ try
                             <%
                                 double amount = 0;
                                 String name= "";
-                                Data_getDebCred.put("finance_journal_line_id",get_journalLineInfo.getInt(1));
-                                Data_getDebCred.put("dev_creb", "debit");
-                                Cond_getDebCred.put("select", "amount,finance_sub_account_id");
-                                Cond_getDebCred.put("where", Data_getDebCred);
-                                
-                                ResultSet res_getDebCred = con.getrows(tb_finance_journal_line_account, Cond_getDebCred);
+                                String cond = "debit";
+                                PreparedStatement pst_getDebCre = conn.prepareStatement("select amount, finance_sub_account_id from finance_journal_line_account where dev_creb = '"+cond+"' AND finance_journal_line_id ='"+get_journalLineInfo.getInt(1)+"'");
+                                ResultSet res_getDebCred = pst_getDebCre.executeQuery();
                                 while(res_getDebCred.next()){
                                     
                                     amount = res_getDebCred.getDouble(1);
@@ -132,21 +127,18 @@ try
                                             </tr>
                                         <%
                                 }
+                                String credit = "credit";
+                                PreparedStatement pst_getCred = conn.prepareStatement("select amount, finance_sub_account_id from finance_journal_line_account where dev_creb ='"+credit+"'");
                                 
-                                Data_getCred.put("finance_journal_line_id",get_journalLineInfo.getInt(1));
-                                Data_getCred.put("dev_creb", "credit");
-                                Cond_getCred.put("select", "amount,finance_sub_account_id");
-                                Cond_getCred.put("where", Data_getCred);
-                                
-                                ResultSet res_getCred = con.getrows(tb_finance_journal_line_account, Cond_getCred);
+                                ResultSet res_getCred = pst_getCred.executeQuery();
                                 while(res_getCred.next()){
                                     
-                                    amount = res_getDebCred.getDouble(1);
+                                    amount = res_getCred.getDouble(1);
                                         
-                                    PreparedStatement prep_getAccountNameFromSub = conn.prepareStatement("select name from finance_sub_account where id ='"+res_getDebCred.getInt(2)+"'");
+                                    PreparedStatement prep_getAccountNameFromSub = conn.prepareStatement("select name from finance_sub_account where id ='"+res_getCred.getInt(2)+"'");
                                     ResultSet res_getAccountNameFromSub = prep_getAccountNameFromSub.executeQuery();
                                     
-                                    PreparedStatement prep_getAccountNameFromSubSub = conn.prepareStatement("select name from finance_sub_sub_account where id = '"+res_getDebCred.getInt(2)+"'");
+                                    PreparedStatement prep_getAccountNameFromSubSub = conn.prepareStatement("select name from finance_sub_sub_account where id = '"+res_getCred.getInt(2)+"'");
                                     ResultSet res_getAccountNameFromSubSub = prep_getAccountNameFromSubSub.executeQuery();
                                     
                                     if(res_getAccountNameFromSub.next())
