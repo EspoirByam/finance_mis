@@ -1085,6 +1085,30 @@ function getDebCred5(idAccount6)
 
                     %>
                        <jsp:include page="views/finance_book_sub_section.jsp"/>
+                    <%                
+                        }
+                     else if ("income_statement".equals(request.getParameter("request"))) { 
+
+                    %>
+                    <jsp:include page="views/report_income_statement.jsp"/>
+                    <%                
+                        }
+                     else if ("report_chart_of_account".equals(request.getParameter("request"))) { 
+
+                    %>
+                    <jsp:include page="views/report_chart_of_account.jsp"/>
+                    <%                
+                        }
+                     else if ("report_journal_entries".equals(request.getParameter("request"))) { 
+
+                    %>
+                    <jsp:include page="views/report_journal_entries.jsp"/>
+                     <%                
+                        }
+                     else if ("balance_sheet".equals(request.getParameter("request"))) { 
+
+                    %>
+                       <jsp:include page="views/report_balance_sheet.jsp"/>
                     <%
                             } 
                       
