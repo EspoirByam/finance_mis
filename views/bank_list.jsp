@@ -6,10 +6,17 @@
             <div class="card">
                 <div class="card-header">
                     <h5>List of Bank</h5>
-                    
+                    <form action="export_bank_list" target="_blank">
+                       <button class="btn btn-mini pull-right btn-default" type="submit" style="margin-left: 5px; background: white;">
+                            <img src="images/pdf.png"/> 
+                            <label style="color: black;"> Export</label>
+                        </button>                     
+                    </form>                        
+                        <a class="btn btn-mini pull-right" sytle="color: white;" href="#"> <img src="images/excel.png"/> Export</a>                 
                 </div>
                 <div class="card-block">
                     <div class="dt-responsive table-responsive">
+                        
                         <table id="order-table" class="table table-striped table-bordered nowrap table-xs">
                             <thead>
                                 <tr>
@@ -17,6 +24,7 @@
                                     <th>Acc. Code</th>
                                     <th>Name</th>
                                     <th>Acc. No</th>
+                                    <th>Amount</th>
                                     <th>Swift-No</th>
                                     <th>Contry</th>
                                     <th>Address</th>
@@ -29,6 +37,7 @@
                                     <td>100040</td>
                                     <td>GT Bank</td>
                                     <td>4005058</td>
+                                    <td>$300,000</td>
                                     <td>157555</td>
                                     <td>Rwanda</td>
                                     <td>KG 44 98 ST </td>
@@ -43,6 +52,7 @@
                                     <td>100040</td>
                                     <td>GT Bank</td>
                                     <td>400058</td>
+                                    <td>$300,000</td>
                                     <td>157555</td>
                                     <td>Rwanda</td>
                                     <td>KG 44 98 ST </td>
@@ -56,6 +66,7 @@
                                     <td>100540</td>
                                     <td>GT Bank</td>
                                     <td>4005058</td>
+                                    <td>$300,000</td>
                                     <td>157555</td>
                                     <td>Rwanda</td>
                                     <td>KG 44 98 ST </td>
@@ -69,6 +80,7 @@
                                     <td>100540</td>
                                     <td>GT Bank</td>
                                     <td>425558</td>
+                                    <td>$300,000</td>
                                     <td>157555</td>
                                     <td>Rwanda</td>
                                     <td>KG 44 98 ST </td>
