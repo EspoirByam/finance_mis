@@ -1015,7 +1015,9 @@ function searchtJournal()
 
 <body>
     <!-- [ Pre-loader ] start -->
-   
+     <div class="" ss="loader-bg">
+        <div class="loader-bar"></div>
+    </div>
     <!-- [ Pre-loader ] end -->
     <div id="pcoded" class="pcoded">
        
