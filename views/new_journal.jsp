@@ -34,7 +34,7 @@
     </div>
     <!-- [ breadcrumb ] end -->
     <div class="pcoded-inner-content">
-        <div class="col-md-8 col-md-offset-3" style="margin-left: 15%;">
+        <div class="col-md-10 col-md-offset-0" style="margin-left: 15%;">
             <div class="card">
                 <div class="card-header">
 
@@ -59,7 +59,7 @@
                         </div>
                         <div class="form-group row" id="global_ac">
                             <label class="col-sm-3 col-form-label">Account</label>
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                                 <select name="select" id="selectAcc" class="form-control form-control-sm" onchange="getAccountInfo2(this.value)">
                                   
                                  <option disabled="true" selected="true">[ Select ]</option>
@@ -88,12 +88,12 @@
                             %>                                          
                                 </select>
                             </div>      
-                            <div class="col-sm-2">                                               
+                            <div class="col-sm-3">                                               
                                 <div class="input-group">
                                     <input type="text" name="amount" placeholder="Amount" id="amount1" class="form-control form-control-sm"  >                     
                                 </div> 
                             </div>                
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div>
                                     <label  id="trying2">
                                         <input type="radio" name="radio1" disabled="true">
@@ -109,7 +109,7 @@
                         
                         <div class="form-group row" id="global_ac">
                             <label class="col-sm-3 col-form-label">Account </label>
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                                 <select onchange="getAccountInfo(this.value)" class="form-control form-control-sm" name="select" id="selectAcc2">
                                     <option class="default">[ SELECT ]</option>
                                     
@@ -147,12 +147,12 @@
                                                        
                                 </select>
                             </div>      
-                            <div class="col-sm-2">                                               
+                            <div class="col-sm-3">                                               
                                 <div class="input-group">
                                     <input type="text" name="amount" placeholder="Amount" id="amount2" class="form-control form-control-sm" onpress="return isNumberKey(event)">                     
                                 </div> 
                             </div>                
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div>
                                     <label  id="trying">
                                         <input type="radio" name="radio1" disabled="true">
@@ -249,7 +249,7 @@
                             e.preventDefault();
                             if (x < max_fields) { //max input box allowed
                                 x++; //text box increment
-                                $(wrapper).append(' <div class="form-group row" id="global_account"> <label class="col-sm-3 col-form-label">Account ' + x + '</label> <div class="col-sm-3"> <select name="select' + x + '" id="selectId' + x + '" onchange="getDebCred'+x+'(this.value)" class="form-control form-control-sm"><option class="default"></select> </div><div class="col-sm-2"><div class="input-group"> <input type="text" id="id_amount' + x + '" placeholder="Amount" class="form-control form-control-sm"  >  </div> </div> <div class="col-sm-4"> <div id="div_radio' + x + '"> <label id="lab_radio' + x + '"> <input type="radio" name="radio' + x + '" disabled="true"> <i class="helper" ></i>Credit <input type="radio" name="radio' + x + '" disabled="true"> <i class="helper"></i>Debit </label><i class="fa fa-times btn-mini btn-danger remove_field" style="margin-left: 15px;"></i> </div> </div> </div> </div>'); //add form
+                                $(wrapper).append(' <div class="form-group row" id="global_account"> <label class="col-sm-3 col-form-label">Account ' + x + '</label> <div class="col-sm-2"> <select name="select' + x + '" id="selectId' + x + '" onchange="getDebCred'+x+'(this.value)" class="form-control form-control-sm"><option class="default"></select> </div><div class="col-sm-3"><div class="input-group"> <input type="text" id="id_amount' + x + '" placeholder="Amount" class="form-control form-control-sm"  >  </div> </div> <div class="col-sm-3"> <div id="div_radio' + x + '"> <label id="lab_radio' + x + '"> <input type="radio" name="radio' + x + '" disabled="true"> <i class="helper" ></i>Credit <input type="radio" name="radio' + x + '" disabled="true"> <i class="helper"></i>Debit </label><i class="fa fa-times btn-mini btn-danger remove_field" style="margin-left: 15px;"></i> </div> </div> </div> </div>'); //add form
 
                                 var acc = "submit".concat(x);
                                 var add = "add_account".concat(x);
