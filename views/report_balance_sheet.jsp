@@ -46,11 +46,11 @@
             <div class="card-block">
                
               <div class="row">
-                <div class="col-md-9 offset-md-1 padd-bottom">
-                <table width="100%" class="t-h-long">
+                <div class="col-md-8 offset-md-2 padd-bottom">
+                <table width="80%" class="t-h-long">
                     <tbody>
                       <tr>
-                          <td scope="col" class="td-bold" colspan="2" align="center" style="background: #9999ff;">BALANCE SHEET</td>
+                          <td scope="col" class="td-bold" colspan="2" align="center" style="background: #9999ff;"><h4>BALANCE SHEET</h4></td>
                       </tr>                   
                       <tr class="tr-h">
                           <td >
@@ -69,18 +69,19 @@
                                         <td >Inventory</td>
                                         <td class="td-style">0</td>
                                     </tr>
-                                    <tr class="hover" onclick="expensivedetail()"> 
+                                    <tr class="tr-h line hover" onclick="expensivedetail()"> 
                                         <td >Prepaid expenses</td>
                                         <td class="td-style">0</td>
                                     </tr>
-                                    <tr  class="tr-h line hover" onclick="otherasset()">
-                                        <td>Other Current  Asset</td>
-                                        <td class="td-style">0</td>
-                                    </tr>
+                                    
                                     <tr class="tr-h">
                                         <td class="td-bold padd-bottom">CURRENT ASSETS</td>
                                         <td class="td-style">0</td>
-                                    </tr>                                     
+                                    </tr>
+                                    <tr  class="tr-h hover" onclick="otherasset()">
+                                        <td>Other Assets</td>
+                                        <td class="td-style">0</td>
+                                    </tr>
                                     <tr class="hover" >
                                         <td>Fixed asset at cost</td>
                                         <td class="td-style">0</td>
@@ -127,7 +128,7 @@
                                         <td class="td-style"> 0</td>
                                     </tr>
                                     <tr class="tr-h line hover">
-                                        <td>Other Liabilities</td>
+                                        <td>Income taxes payable</td>
                                         <td class="td-style">0</td>
                                     </tr>
                                     <tr class="tr-h td-bold"> 
@@ -166,16 +167,25 @@
                   </table>
                 </div>
                 <div class="col-md-2">
-                    <a class="btn btn-mini padd-top" sytle="color: white;" href="#" > <img class="padd-top img-responsive" src="images/pdf.png"/> Export</a>
-                    <a class="btn btn-mini padd-top" sytle="color: white;" href="#" > <img class="padd-top img-responsive" src="images/excel.png"/> Export</a>
+                    <form action="balance_sheet_report" target="_blank">
+                       <button class="btn btn-mini pull-right btn-default" type="submit" style="margin-left: 5px; background: white;">
+                            <img class="img-responsive" src="images/pdf.png"/> 
+                            <label style="color: black;"> Export</label>
+                        </button>                     
+                    </form>  
+                    <form >
+                       <button class="btn btn-mini pull-right btn-default" type="submit" style="margin-left: 5px; background: white;">
+                            <img class="img-responsive" src="images/excel.png"/>
+                            <label style="color: black;"> Export</label>
+                        </button>                     
+                    </form> 
+                    
                 </div>
             </div>
             </div>
            </div>
         </div>
     </div>
-</div>
-
 
 <!-- Cash Detail Modal -->
 <div class="modal fade" id="cash-detail" tabindex="-1" role="dialog"  aria-hidden="true">
