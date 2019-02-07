@@ -9,9 +9,12 @@
         color: #ed0000 !important;
         translation-value: all 1s linear;
     }  
+    nav{
+        
+    }
     
 </style>    
-<nav class="pcoded-navbar">
+<nav class="pcoded-navbar" style="overflow-y: auto !important;">
             <div class="nav-list">
                 <div class="pcoded-inner-navbar main-menu" >
                     <div class="pcoded-navigation-label">Main Menu</div>
@@ -723,7 +726,7 @@
                         </li>
                      <%
                               }
-                         if ("fiscal_year".equals(request.getParameter("request")) || "finance_main_account".equals(request.getParameter("request")) || "finance_book".equals(request.getParameter("request")) || "finance_book_section".equals(request.getParameter("request"))) { 
+                         if ("fiscal_year".equals(request.getParameter("request")) || "finance_main_account".equals(request.getParameter("request")) || "finance_book".equals(request.getParameter("request")) || "finance_book_section".equals(request.getParameter("request")) || "finance_book_sub_section".equals(request.getParameter("request"))) { 
                       %>
                     
                        <li class="pcoded-hasmenu active pcoded-trigger">
@@ -800,7 +803,7 @@
                         </li>
                         <%
                              }
-                         if ("balance_sheet".equals(request.getParameter("request")) || "income_statement".equals(request.getParameter("request")) || "report_journal_entries".equals(request.getParameter("request"))) {
+                         if ("balance_sheet".equals(request.getParameter("request")) || "cash_flow".equals(request.getParameter("request")) || "income_statement".equals(request.getParameter("request")) || "report_journal_entries".equals(request.getParameter("request"))) {
                         %>
                          <li class="pcoded-hasmenu active pcoded-trigger">
                             <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -812,6 +815,11 @@
                                  <li class="active">
                                     <a href="index.jsp?request=balance_sheet" class="waves-effect waves-dark">
                                         <span class="pcoded-mtext">Balance Sheet</span>
+                                    </a>
+                                </li> 
+                                 <li class="active">
+                                    <a href="index.jsp?request=cash_flow" class="waves-effect waves-dark">
+                                        <span class="pcoded-mtext">Cash Flow</span>
                                     </a>
                                 </li> 
                                 <li class="">
@@ -845,6 +853,11 @@
                                  <li class="">
                                     <a href="index.jsp?request=balance_sheet" class="waves-effect waves-dark">
                                         <span class="pcoded-mtext">Balance Sheet</span>
+                                    </a>
+                                </li> 
+                                   <li class="active">
+                                    <a href="index.jsp?request=cash_flow" class="waves-effect waves-dark">
+                                        <span class="pcoded-mtext">Cash Flow</span>
                                     </a>
                                 </li> 
                                 <li class="">
