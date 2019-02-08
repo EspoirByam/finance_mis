@@ -1,41 +1,3 @@
-<%@page import="java.util.Map"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="core.*" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.ResultSet"%>
-
-<%
-Map Cond_getJournalLineInfo = null;
-Cond_getJournalLineInfo = new HashMap();
-Map Cond_getFiscalYear = null;
-Cond_getFiscalYear = new HashMap();
-Map Data_getFiscalYear = null;
-Data_getFiscalYear = new HashMap();
-Map Data_getDebCred = null;
-Data_getDebCred = new HashMap();
-Map Cond_getDebCred = null;
-Cond_getDebCred = new HashMap();
-Map Data_getNameAccount = null;
-Data_getNameAccount = new HashMap();
-Map Cond_getNameAccount = null;
-Cond_getNameAccount = new HashMap();
-Map Data_getCred = null;
-Data_getCred = new HashMap();
-Map Cond_getCred = null;
-Cond_getCred = new HashMap();
-String tb_finance_journal_line ="finance_journal_line";
-String tb_finance_fiscal_year = "finance_fiscal_year";
-String tb_finance_journal_line_account = "finance_journal_line_account";
-String tb_finance_sub_account = "finance_sub_account";
-try
-    {
-    db con= new db();
-    con.connection();
-    Connection conn = con.getcon();
-%>
 <style>
     table{
         font-weight: 450;
@@ -56,121 +18,132 @@ try
                     <div class="row">
                     <div class="col-md-10 ml-20">
                     <div class="dt-responsive table-responsive">
-                           <%
-                           PreparedStatement pst_getJournalLineInfo = conn.prepareStatement("select id, memo, date, fiscalyear from finance_journal_line");
-                           ResultSet get_journalLineInfo = pst_getJournalLineInfo.executeQuery();
-                           String fiscal_year = "";
-                           
-                           String acc_name = "ACCOUNT No";
-                           String deb = "DEBIT";
-                           String cre = "CREDIT";
-                           
-                           while(get_journalLineInfo.next())
-                           {
-                               PreparedStatement getFiscalYear = conn.prepareStatement("select name from finance_fiscal_year where id ='"+get_journalLineInfo.getInt(4)+"'");
+                       <table width="750" border="1" align="center">
+                     	 
+                        <tr bgcolor="#CCFFCC">
+                          <td width="93" bgcolor="#CCFFCC" style="border-width: 2; padding: 2;">
+                              <p align="center"><b>Date</b></p></td>
+                          <td width="276" style="border-width: 2; padding: 2; font-weight: bold;"><div align="center"><b>Account Title and Explanations </b></div></td>
+                          <td width="50" bordercolor="#000000" bgcolor="#CCFFCC" ><div align="center"><b>Ref</b></div></td>
+                          <td width="73"  bordercolor="#000000" bgcolor="#CCFFCC" style="border-width: 2; padding: 0; " colspan="2"><div align="center"> Amount</div>
+                              <div align="center"><b>
                               
-                               ResultSet res_getFiscalYear = getFiscalYear.executeQuery();
-                               while(res_getFiscalYear.next())
-                               {
-                                   fiscal_year = res_getFiscalYear.getString(1);
-                               }
-                               %>
-                           <table width="750" border="2" align="center">
-                       
-                           <tr bgcolor="#CCFFCC">
-                                <td width="93" bgcolor="#CCFFCC" style="border-width: 2; padding: 2;"><p></p>
-                                    <p align="center" style=" width:   20px; height: 13px;"><strong><%=acc_name%></strong></p>
-                                  </td>
-                                <td width="276" style="border-width: 2; padding: 2;  "><div align="center"><strong><%=get_journalLineInfo.getInt(1)%><strong>/</strong><%=get_journalLineInfo.getDate(3)%><strong>/</strong><%=fiscal_year%></strong></div>
-                                </td>
-                                <td width="73" bordercolor="#000000" bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="center"><strong><%=deb%></strong></div>
-                                </td>
-                                <td width="73" bordercolor="#000000" bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="center"><strong><%=cre%></strong></div>
-                                </td>
-                                <td width="73" bordercolor="#000000" bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="center"><strong>Actions</strong></div></td>
-                            </tr>
-                            <%
-                                double amount = 0;
-                                String name= "";
-                                String cond = "debit";
-                                PreparedStatement pst_getDebCre = conn.prepareStatement("select amount, finance_sub_account_id from finance_journal_line_account where dev_creb = '"+cond+"' AND finance_journal_line_id ='"+get_journalLineInfo.getInt(1)+"'");
-                                ResultSet res_getDebCred = pst_getDebCre.executeQuery();
-                                while(res_getDebCred.next()){
-                                    
-                                    amount = res_getDebCred.getDouble(1);
-                                        
-                                    PreparedStatement prep_getAccountNameFromSub = conn.prepareStatement("select name from finance_sub_account where id ='"+res_getDebCred.getInt(2)+"'");
-                                    ResultSet res_getAccountNameFromSub = prep_getAccountNameFromSub.executeQuery();
-                                    
-                                    PreparedStatement prep_getAccountNameFromSubSub = conn.prepareStatement("select name from finance_sub_sub_account where id = '"+res_getDebCred.getInt(2)+"'");
-                                    ResultSet res_getAccountNameFromSubSub = prep_getAccountNameFromSubSub.executeQuery();
-                                    
-                                    if(res_getAccountNameFromSub.next())
-                                    {
-                                            name = res_getAccountNameFromSub.getString(1);
-                                    }else if(res_getAccountNameFromSubSub.next())
-                                    {
-                                            name = res_getAccountNameFromSubSub.getString(1);
-                                    }
-                                        
-                                        %>
-                                            <tr bgcolor="#99FFFF">
-                                                <td width="93" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; width:   20px; "><div align="center"><%=res_getDebCred.getInt(2)%></div></td>
-                                                <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; width:   20px; "><%=name%></td>
-                                                <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2;  width:   20px;"><div align="right"><%=amount%></div></td>
-                                                <td width="73" bordercolor="#FFFF99" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; width:   20px; "><div align="right"></div></td>
-                                                 <td width="73" colspan="2" bgcolor="#FFFFCC">                                    
-                                                     <a href="#!" title="Update" data-toggle="modal" data-target="#update-operation" ><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                                     <a href="#!" class="deleteConfirm" title="Delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
-                                                 </td>
-                                            </tr>
-                                        <%
-                                }
-                                String credit = "credit";
-                                PreparedStatement pst_getCred = conn.prepareStatement("select amount, finance_sub_account_id from finance_journal_line_account where dev_creb ='"+credit+"'");
-                                
-                                ResultSet res_getCred = pst_getCred.executeQuery();
-                                while(res_getCred.next()){
-                                    
-                                    amount = res_getCred.getDouble(1);
-                                        
-                                    PreparedStatement prep_getAccountNameFromSub = conn.prepareStatement("select name from finance_sub_account where id ='"+res_getCred.getInt(2)+"'");
-                                    ResultSet res_getAccountNameFromSub = prep_getAccountNameFromSub.executeQuery();
-                                    
-                                    PreparedStatement prep_getAccountNameFromSubSub = conn.prepareStatement("select name from finance_sub_sub_account where id = '"+res_getCred.getInt(2)+"'");
-                                    ResultSet res_getAccountNameFromSubSub = prep_getAccountNameFromSubSub.executeQuery();
-                                    
-                                    if(res_getAccountNameFromSub.next())
-                                    {
-                                            name = res_getAccountNameFromSub.getString(1);
-                                    }else if(res_getAccountNameFromSubSub.next())
-                                    {
-                                            name = res_getAccountNameFromSubSub.getString(1);
-                                    }
-                                    prep_getAccountNameFromSub.close();
-                                        
-                                        %>
-                                            <tr  bgcolor="#99FFFF">
-                                              <td width="93" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="center">101000</div></td>
-                                              <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right"><%=name%></div></td>
-                                              <td width="73" bordercolor="#FFFFCC" bgcolor="#FFFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
-                                              <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right"><%=amount%></div></td>
-                                            </tr>
-                                        <%
-                                }
-                                %>
-                           </table>
-                                <%
-                           acc_name = "";
-                           deb = "";
-                           cre = "";
-                           }
-                           %>
+                                <table style="width: 100%;">
+                                        <tr>  
+                                            <td colspan="2">
+                                                <table align="center" border="1" style="width: 100%;">
+                                                    <tr>
+                                                        <td width="73"  bgcolor="#CCFFCC"  colspan="2" ><div align="left">Debit</div></td>
+                                                        <td width="73"  bordercolor="#000000" bgcolor="#CCFFCC" style="border-top: 1px solid #000; " colspan="2"><div align="right">Credit</div></td>
+                                                    </tr>
+
+                                                </table>
+                                              </td>
+                                        </tr>
+                                </table>
+                                  </b></div>
+                            </td>
+                          
+                        <td width="73" bordercolor="#000000" bgcolor="#CCFFCC" style="border-width: 2; padding: 2; ">
+                            <div align="center"><b>Actions</b></div>
+                        </td>
+                        </tr>
+                        <tr>
+                             <td colspan="6" style="border-bottom: 2px solid #000;"></td>
+                        </tr>
+                        <tr bgcolor="#99FFFF">
+                          <td width="93" rowspan="3" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="center">2.02.2019</div></td>
+                          <td width="276" bgcolor="#CCCCCC" style=" padding: 2; border-bottom: hidden;">Bank</td>
+                          <td width="50" rowspan="3" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="center">001</div> </td>
+                          <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">20 000</div></td>
+                          <td width="73" bordercolor="#FFFF99"  bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                          <td rowspan="3" bgcolor="#CCFFCC" >
+                              <div align="center">
+                               <a href="#!" data-target="#update-operation" data-toggle="modal" title="Update"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                               <a href="#!" title="Delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
+                              </div>
+                          </td> 
+                        </tr>
+                        <tr  bgcolor="#99FFFF">
+                          <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2;border-bottom: hidden; "><div align="right">Capital</div></td>
+                          <td width="73" rowspan="2" bordercolor="#FFFFCC"  bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                          <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">20 000</div></td>
+                        </tr>
+                        <tr  bgcolor="#99FFFF">
+                          <td width="276" style="border-width: 2; padding: 2;  "  bgcolor="#CCFFCC"><div align="center">Entreprise creation <br></div></td>
+                          <td width="73" bordercolor="#FFFFCC" bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "></td>
+                        </tr>
+                        <tr>
+                           <td colspan="6" style="border-bottom: 2px solid #000;"></td>
+                        </tr>
+                        <tr bgcolor="#99FFFF">
+                          <td width="93" rowspan="3" bgcolor="#CCCCCC" style="border-width: 2; padding: 2;"><div align="center">12.02.2019</div></td>
+                          <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2;border-bottom: hidden;    ">Bank</td>
+                          <td width="50" rowspan="3" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="center">002</div> </td>
+                          <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">20 000</div></td>
+                          <td width="73" bordercolor="#FFFF99"  bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                         <td rowspan="3" bgcolor="#CCFFCC" >
+                              <div align="center">
+                               <a href="#!" data-target="#update-operation2" data-toggle="modal" title="Update"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                               <a href="#!" title="Delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
+                              </div>
+                          </td> 
+                        </tr>
+                        <tr  bgcolor="#99FFFF">
+                          <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; border-bottom: hidden; "><div align="right">Kansim</div></td>
+                          <td width="73" rowspan="2" bordercolor="#FFFFCC"  bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                          <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">20 000</div></td>
+                        </tr>
+                        <tr  bgcolor="#99FFFF">
+                           <td width="276" style="border-width: 2; padding: 2; "  bgcolor="#CCFFCC"><div align="center">Client Payment<br></div></td>
+                          <td width="73" bordercolor="#FFFFCC"  bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                        </tr>
+                        <tr>
+                           <td colspan="6" style="border-bottom: 2px solid #000;"></td>
+                        </tr>
+                        <tr bgcolor="#99FFFF">
+                          <td width="93" rowspan="3" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="center">22.03.2019</div></td>
+                          <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; border-bottom: hidden; ">Bank</td>
+                          <td width="50" rowspan="3" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="center">003</div> </td>
+                          <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">20 000</div></td>
+                          <td width="73" bordercolor="#FFFF99"  bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                          <td rowspan="3" bgcolor="#CCFFCC" >
+                              <div align="center">
+                               <a href="#!" title="Update"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                               <a href="#!" title="Delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
+                              </div>
+                          </td> 
+                        </tr>
+                        <tr  bgcolor="#99FFFF">
+                          <td width="276" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; border-bottom: hidden;"><div align="right">Capital</div></td>
+                          <td width="73" rowspan="2" bordercolor="#FFFFCC" bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                          <td width="73" bgcolor="#CCCCCC" style="border-width: 2; padding: 2; "><div align="right">20 000</div></td>
+                        </tr>
+                        <tr  bgcolor="#99FFFF">
+                          <td width="276" style="border-width: 2; padding: 2;"  bgcolor="#CCFFCC"><div align="center">Loan Payment<br></div></td>
+                          <td width="73" bordercolor="#FFFFCC"  bgcolor="#CCFFCC" style="border-width: 2; padding: 2; "><div align="right"></div></td>
+                        </tr>
+                        <tr>
+                           <td colspan="6" style="border-bottom: 2px solid #000;"></td>
+                        </tr>
+                      </table>
+                
                     </div>
                     </div>
                     <div class="col-md-2">                               
-                         <a class="btn btn-mini pull-left" sytle="color: white;" href="#"> <img src="images/excel.png"/> Export</a>      
-                         <a class="btn btn-mini pull-left" sytle="color: white;" href="#"> <img src="images/pdf.png"/> Export</a>               
+                      <form action="export_journal" target="_blank">
+                       <button class="btn btn-mini pull-right btn-default" type="submit" style="margin-left: 5px; background: white;">
+                            <img src="images/pdf.png"/> 
+                            <label style="color: black;"> Export</label>
+                        </button>                     
+                    </form>
+                    <form target="_blank">
+                       <button class="btn btn-mini pull-right btn-default" type="submit" style="margin-left: 5px; background: white;">
+                            <img src="images/excel.png"/> 
+                            <label style="color: black;"> Export</label>
+                        </button>                     
+                    </form>
+                        
                     </div>
                     </div>
                 </div>
@@ -179,13 +152,6 @@ try
         </div>
     </div>
 </div>
-    <%
-        }catch(ClassNotFoundException e)
-        {
-            out.print(e);
-        } 
-    %>   
-
 
 <!--Update Operation Modal --> 
 <div class="modal fade" id="update-operation" tabindex="-1" role="dialog">
