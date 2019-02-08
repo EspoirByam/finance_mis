@@ -101,7 +101,7 @@
                                 </tr>
                                 <tr class="tr-h">
                                       <td  class="td-bold padd-bottom" > CASH FROM OPERATIONS</td>
-                                      <td class="td-style padd-bottom">0</td>
+                                      <td class="td-style padd-bottom"><div class="text-right">0</div></td>
                                   </tr>
                                   <tr class="tr-h hover" onclick="salemarkerting()" >
                               <div>
