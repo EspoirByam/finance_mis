@@ -1,8 +1,12 @@
 <style>
-    .hover :hover{
+    
+    .hover:hover{
         background-color: #9999ff;
         font-weight: bold !important;
         cursor: pointer;
+    }
+    td{
+        font-weight: bold;
     }
     .tr-h{
         LINE-HEIGHT:15px !important;
@@ -59,45 +63,45 @@
                                   <table width="100%" class="t-h-long">
                                     <tr class="hover" onclick="detail()" data-whatever="Cas(HandOnBank)">                                          
                                         <td>Cash (hand and bank)</td>
-                                        <td class="td-style">0</td>     
+                                        <td class="td-style"><div class="text-right">0</div></td>     
                                     </tr>                                     
                                     <tr class="hover" onclick="accdetail()">
                                         <td >Account Receivable</td>
-                                        <td class="td-style">0</td> 
+                                        <td class="td-style"><div class="text-right">0</div></td> 
                                     </tr>
                                     <tr class="hover" onclick="invdetail()" >
                                         <td >Inventory</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>
                                     <tr class="tr-h line hover" onclick="expensivedetail()"> 
                                         <td >Prepaid expenses</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>
                                     
-                                    <tr class="tr-h">
+                                    <tr class="hover" >
                                         <td class="td-bold padd-bottom">CURRENT ASSETS</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>
                                     <tr  class="tr-h hover" onclick="otherasset()">
                                         <td>Other Assets</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>
                                     <tr class="hover" >
                                         <td>Fixed asset at cost</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>
                                     <tr class="tr-h line hover">
                                         <td>Accumulated depreciation</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>
 
                                     <tr class="tr-h">
                                         <td class="td-bold padd-bottom">NET FIXED ASSETS</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>                                   
                                     <tr class="tr-h line">
                                         <td class="td-bold">TOTAL ASSET</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>
                                      <tr>
                                         <td colspan="2" style="border-bottom: 1px solid #000;"></td>
@@ -113,48 +117,45 @@
                                     
                                     <tr class="tr-h hover">
                                         <td >Accounts Payable </td>
-                                        <td class="td-style"> 0</td>
+                                        <td class="td-style"> <div class="text-right">0</div></td>
                                     </tr>
                                     <tr class="tr-h hover">
                                         <td>Accrued expenses</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>
                                     <tr class="tr-h hover">
                                         <td>Income taxes payable</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>
-                                    <tr class="tr-h hover">
+                                    <tr class="tr-h hover line">
                                         <td>Current portion of debt</td>
-                                        <td class="td-style"> 0</td>
+                                        <td class="td-style"> <div class="text-right">0</div></td>
                                     </tr>
-                                    <tr class="tr-h line hover">
-                                        <td>Income taxes payable</td>
-                                        <td class="td-style">0</td>
-                                    </tr>
+                                   
                                     <tr class="tr-h td-bold"> 
                                         <td class="padd-bottom">CURRENT LIABILITIES</td>
-                                        <td class="td-style"> 0</td>
+                                        <td class="td-style"> <div class="text-right">0</div></td>
                                     </tr>
                                     <tr class="tr-h hover"> 
                                         <td>Long term debt</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>
                                     <tr class="tr-h hover"> 
                                         <td>Capital stock</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>
                                     <tr class="tr-h line hover"> 
                                         <td>Retained earnings</td>
-                                        <td class="td-style"> 0</td>
+                                        <td class="td-style"> <div class="text-right">0</div></td>
                                     </tr>
                                     <tr class="tr-h">
                                         <td class="td-bold padd-bottom">SHAREHOLDER'S EQUITY</td>
-                                        <td class="td-style"> 0</td>
+                                        <td class="td-style"> <div class="text-right">0</div></td>
                                     </tr>
                                   
                                     <tr class="tr-h line">
                                         <td class="td-bold">TOTAL LIABILITIES & EQUITY</td>
-                                        <td class="td-style">0</td>
+                                        <td class="td-style"><div class="text-right">0</div></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="border-bottom: 1px solid #000;"></td>
