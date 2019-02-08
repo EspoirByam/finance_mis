@@ -1,6 +1,9 @@
 <style>
+    td{
+        font-weight: bold;
+    }
     
-    .hover :hover{
+    tr:hover{
         background-color: #9999ff;
         font-weight: bold !important;
         cursor: pointer;
@@ -76,32 +79,32 @@
                         </div>                        
                     </div>
                         <div class="row">                  
-                          <div class="col-md-9 offset-md-1 padd-bottom">
-                          <table width="100%" class="t-h-long">
+                          <div class="col-md-8 offset-md-2 padd-bottom">
+                          <table width="75%" class="t-h-long">
                               <thead>
                                 <tr>
                                     <td scope="col" class="td-bold" colspan="3" align="center" style="background: #9999ff;">INCOME STATEMENT</td>
                                 </tr>
                               </thead>
                               <tbody>
-                                  <tr class="tr-h hover" onclick="detail()">
+                                <tr class="tr-h hover" onclick="detail()">
                                   <td >Sales revenue</td>
                                   <td class="td-style">1</td>
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h hover" onclick="costofgood()">
                                   <td >Cost of good sold</td>
                                   <td class="td-style">2</td>
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h line hover" onclick="otherincom()">
                                   <td >Other Income</td>
                                   <td class="td-style">3</td>
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h">
                                       <td colspan="2" class="td-bold padd-bottom" > GROSS MARGIN</td>
-                                      <td class="td-style padd-bottom">0</td>
+                                      <td class="td-style padd-bottom"><div class="text-right">0</div></td>
                                   </tr>
                                   <tr class="tr-h hover" onclick="salemarkerting()" >
                               <div>
@@ -109,49 +112,59 @@
                               </div>
                                   <td >Sales and marketing</td>
                                   <td class="td-style">5</td>
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h hover" onclick="researchdev()">
                                   <td >Research & Development</td>
                                   <td class="td-style">6</td>
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h line hover" onclick="otherexpenses()">
                                   <td >Other expenses</td>
                                   <td class="td-style">7</td>
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h">
                                   <td colspan="2" class="td-bold">OPERATING EXPENSIVES</td>
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h"> 
                                     <td colspan="2" class="td-bold padd"> INCOME FROM OPERATIONS </td>
-                                    <td class="td-style">0</td>
+                                    <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr>
-                                    <td><b>  Interest income </b></td>
+                                    <td>  Interest income</td>
                                     <td class="td-style">8</td> 
-                                    <td class="td-style">0 </td> 
+                                    <td class="td-style"><div class="text-right">0</div> </td> 
                                </tr>
                                <tr class="tr-h" > 
                                   <td> Income tax  </td>
                                   <td class="td-style" >9</td>
-                                  <td class="td-style">0</td>     
+                                  <td class="td-style"><div class="text-right">0</div></td>     
                                   </td> 
                                </tr>
                                <tr  style="text-decoration: underline;" class="tr-h"> 
                                    <td class="td-bold padd-top">NET INCOME</td>
                                    <td class="td-style padd-top" >10</td>
-                                   <td class="td-style padd-top">0</td>
+                                   <td class="td-style padd-top"><div class="text-right">0</div></td>
                                </tr>
 
                               </tbody>
                             </table>
                           </div>
                           <div class="col-md-2">
-                              <a class="btn btn-mini padd-top" sytle="color: white;" > <img class="padd-top-15 img-responsive" src="images/pdf.png"/> Export</a>
-                              <a class="btn btn-mini padd-top" sytle="color: white;" > <img class="padd-top-15 img-responsive" src="images/excel.png"/> Export</a>
+                              <form action="income_statement" target="_blank">
+                                <button class="btn btn-mini pull-right btn-default" type="submit" style="margin-left: 5px; background: white;">
+                                     <img src="images/pdf.png"/> 
+                                     <label style="color: black;"> Export</label>
+                                 </button>                     
+                             </form>  
+                             <form >
+                                <button class="btn btn-mini pull-right btn-default" type="submit" style="margin-left: 5px; background: white;">
+                                     <img src="images/excel.png"/> 
+                                     <label style="color: black;"> Export</label>
+                                 </button>                     
+                             </form> 
                           </div>
                        </div>
                      </div>
