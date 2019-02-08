@@ -1,9 +1,12 @@
 <style>
     
-    tr :hover{
+    tr:hover{
         background-color: #9999ff;
         font-weight: bold !important;
         cursor: pointer;
+    }
+    td{
+        font-weight: bold;
     }
     .tr-h{
         LINE-HEIGHT:15px !important;
@@ -86,15 +89,15 @@
                               <tbody>
                                 <tr class="tr-h hover" onclick="detail()">
                                   <td >Beginning Cash Balance</td>                                  
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h hover" onclick="costofgood()">
                                   <td >Cash Receipt</td>
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h line hover" onclick="otherincom()">
                                   <td >Cash Disbursement</td>
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h">
                                       <td  class="td-bold padd-bottom" > CASH FROM OPERATIONS</td>
@@ -105,23 +108,23 @@
                                   <br>
                               </div>
                                   <td >Fixed Asset Purchase</td>
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h hover" onclick="researchdev()">
                                   <td >Net Borrowing</td>
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h hover" onclick="otherexpenses()">
                                   <td >Income Tax Paid</td>
-                                  <td class="td-style">0</td>
+                                  <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                  <tr class="tr-h hover" onclick="otherexpenses()">
                                   <td class="padd-bottom" >Share Capital</td>
-                                  <td class="td-style padd-bottom">0</td>
+                                  <td class="td-style padd-bottom"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h line">
                                   <td  class="td-bold">ENDING CASH BALANCE </td>
-                                  <td class="td-style">0</td>                                   
+                                  <td class="td-style"><div class="text-right">0</div></td>                                   
                                 </tr> 
                                <tr>
                                     <td colspan="2" style="border-bottom: 1px solid #000;"></td>
@@ -131,7 +134,7 @@
                             </table>
                           </div>
                           <div class="col-md-2">
-                              <form action="income_statement" target="_blank">
+                              <form action="cash_flow" target="_blank">
                                 <button class="btn btn-mini pull-right btn-default" type="submit" style="margin-left: 5px; background: white;">
                                      <img src="images/pdf.png"/> 
                                      <label style="color: black;"> Export</label>
