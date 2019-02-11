@@ -1,140 +1,98 @@
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.time.Year"%>
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="core.*" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.ResultSet"%>
+<%
+db con= new db();
+con.connection();
+Connection conn = con.getcon();
+
+Map Cond_getAssets = new HashMap();
+Map Data_getAssets = new HashMap();
+Map Cond_getMainAccount = new HashMap();
+Map Data_getMainAccount = new HashMap();
+Map Data_getAmountSubAcc = new HashMap();
+Map Cond_getAmountSubAcc = new HashMap();
+Map Data_getAmountSubSubAcc = new HashMap();
+Map Cond_getAmountSubSubAcc = new HashMap();
 
 
-<div class="pcoded-content">
+Map Cond_getLiabilities = new HashMap();
+Map Data_getLiabilities = new HashMap();
+Map Cond_getMainAccountL = new HashMap();
+Map Data_getMainAccountL = new HashMap();
+Map Data_getAmountSubAccL = new HashMap();
+Map Cond_getAmountSubAccL = new HashMap();
+Map Data_getAmountSubSubAccL = new HashMap();
+Map Cond_getAmountSubSubAccL = new HashMap();
+
+Map Cond_get_payable = new HashMap();
+
+
+
+
+String tb_finance_book_section = "finance_book_section";
+String tb_finance_book_section_main_account = "finance_book_section_main_account";
+String tb_finance_sub_account ="finance_sub_account";
+String tb_finance_sub_sub_account = "finance_sub_sub_account";
+
+    
+try
+{
+%>
+
+                   <div class="pcoded-content">
                         <!-- [ breadcrumb ] start -->
-                        <div class="page-header card">
-                            <div class="row align-items-end">
-                                <div class="col-lg-8">
-                                    <div class="page-header-title">
-                                        <i class="feather icon-home bg-c-blue"></i>
-                                        <div class="d-inline">
-                                            <h5>Dashboard</h5>
-                                            <span>Welcome <%=session.getAttribute("UserName") %></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                            </div>
-                        </div>
-                        <!-- [ breadcrumb ] end -->
+                        
+                          
+
                         
                         <div class="pcoded-inner-content">
                             <div class="main-body">
                                 <div class="page-wrapper">
                                     <div class="page-body">
                                         <!-- [ page content ] start -->
-                                        <div class="row">
+                                        <div class="row" style="height: 50%;">
+                                            <!-- Project statustic start -->
+                                             <div class="col-xl-12">
+                                                 <div class="card proj-progress-card" style="margin-top: 15px;">
+                                                     <div class="card-block">
+                                                         <div class="row">
 
-                                           <!-- peoduct statustic start -->
-                                            <div class="col-xl-12">
-                                                <div class="card product-progress-card">
-                                                    <div class="card-block">
-                                                        <div class="row pp-main">
-                                                             <div class="col-xl-3 col-md-6">
-                                                                <div class="pp-cont">
-                                                                    <div class="row align-items-center m-b-20">
-                                                                        <div class="col-auto">
-                                                                            <img src="images/b-s.png" style="height: 45px; width: 45px;" alt=""/>
-                                                                        </div>
-                                                                        
-                                                                        <div class="col text-right">    
-                                                                          <p class="m-b-0 text-center text-c-blue" style="font-weight: bold;"> Balance Sheet</p>
-                                                                            
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row align-items-center m-b-15">
-                                                                        <div class="col-auto">
-                                                                            <p class="m-b-0">Assets</p>
-                                                                            <p class="m-b-0">Liabilities</p>
-                                                                        </div>
-                                                                        <div class="col text-right">
-                                                                            <p class="m-b-0 text-c-blue">0.0</p>
-                                                                            <p class="m-b-0 text-c-blue">0.0</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                            
-                                                            <div class="col-xl-3 col-md-6">
-                                                                <div class="pp-cont">
-                                                                    <div class="row align-items-center m-b-20">
-                                                                        <div class="col-auto">
-                                                                            <img src="images/acc-p.jpg" style="width: 45px; height: 45px;" alt=""/>
-                                                                        </div>
-                                                                        <div class="col text-right">
-                                                                            <h2 class="m-b-0 text-c-yellow">0.0</h2>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row align-items-center m-b-15">
-                                                                        <div class="col-auto">
-                                                                            <p class="m-b-0">Accounts Payables</p>
-                                                                        </div>
-                                                                        <div class="col text-right">
-                                                                            <p class="m-b-0 text-c-yellow"><i class="fas fa-long-arrow-alt-up m-r-10"></i>0.0%</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar bg-c-yellow" style="width:0%"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-3 col-md-6">
-                                                                <div class="pp-cont">
-                                                                    <div class="row align-items-center m-b-20">
-                                                                        <div class="col-auto">
-                                                                            <img src="images/acc-r.jpeg" style="width: 45px; height: 45px;" alt=""/>
-                                                                        </div>
-                                                                        <div class="col text-right">
-                                                                            <h2 class="m-b-0 text-c-red">0.0</h2>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row align-items-center m-b-15">
-                                                                        <div class="col-auto">
-                                                                            <p class="m-b-0">Accounts Receivables</p>
-                                                                        </div>
-                                                                        <div class="col text-right">
-                                                                            <p class="m-b-0 text-c-red"><i class="fas fa-long-arrow-alt-down m-r-10"></i>0.0%</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar bg-c-red" style="width:2%"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                             <div class="col-xl-3 col-md-6">
-                                                                <div class="pp-cont">
-                                                                    <div class="row align-items-center m-b-20">
-                                                                        <div class="col-auto">
-                                                                            <img src="images/i-s.png" style="width: 45px; height: 45px;" alt=""/>
-                                                                        </div>
-                                                                        <div class="col text-right">
-                                                                            <p class="m-b-0 text-center text-c-green" style="font-weight: bold;"> Income Statement</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row align-items-center m-b-15">
-                                                                        <div class="col-auto">
-                                                                            <p class="m-b-0">Expenses</p>
-                                                                            <p class="m-b-0">Incomes</p>
-                                                                        </div>
-                                                                        <div class="col text-right">
-                                                                            <p class="m-b-0 text-c-green">0.0</p>
-                                                                            <p class="m-b-0 text-c-green">0.0</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                          
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- product statistic end -->
+                                                             <div class="col-xl-6 col-md-6">
+                                                                 <h6>Total Payables</h6>
+                                                                 <h5 class="m-b-30 f-w-700 text-c-blue"> $ 4,569,000</h5>
+                                                                 <div class="progress">
+                                                                     <div class="progress-bar bg-c-blue" style="width:45%"></div>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="col-xl-6 col-md-6">
+                                                                 <h6>Total Receivables</h6>
+                                                                 <h5 class="m-b-30 f-w-700 text-c-green">$ 89,000,000</h5>
+                                                                 <div class="progress">
+                                                                     <div class="progress-bar bg-c-green" style="width:55%"></div>
+                                                                 </div>
+                                                             </div>
 
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                             <!-- Project statustic end -->
+                                             
                                             <!-- Threshold plugin start -->
-                                            <div class="col-xl-6 col-md-12">
-                                                <div class="card">
+                                            <div class="col-xl-12 col-md-12">
+                                                <div class="card" style="height: 70%;">
                                                     <div class="card-header">
                                                         <h5>Cash Flow</h5>
                                                         <div class="col-sm-4 pull-right">
@@ -151,32 +109,32 @@
                                                         </div>
                                                      </div>
                                                     <div class="card-block">
-                                                        <canvas id="lineChart"></canvas>
+                                                        <div class="row">
+                                                            <div class="col-sm-9">
+                                                                <canvas id="lineChart"></canvas> 
+                                                            </div>
+                                                        
+                                                        <div class="col-sm-3">
+                                                        <div class="card table-card" style="margin-top: 35px;">
+                                                            <div class="card-block"  >
+                                                                <div class="text-right">
+                                                                    <span style="font-size: 13px;" class="text-disable">Cash as on 29.01.19</span><br>
+                                                                    <span style="font-size: 14px; font-weight: bold;" class="text-disable text-right">$ 400,999,000</span> <br><br>
+                                                                    <span style="font-size: 13px;" class="text-success">Incoming</span><br>
+                                                                    <span style="font-size: 14px; font-weight: bold;" class="text-disable text-right">$ 400,999,000</span><br><br>
+                                                                    <span style="font-size: 13px;" class="text-danger">Outgoing</span><br>
+                                                                    <span style="font-size: 14px; font-weight: bold;" class="text-disable text-right">$ 400,999,000</span><br><br>
+                                                                    <span style="font-size: 13px;" class="text-info">Cash as on 08.02.19</span><br>
+                                                                    <span style="font-size: 14px; font-weight: bold;" class="text-disable text-right">$ 400,999,000</span><br>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Threshold plugin end -->
-                                            
-                                            
-                                            <!-- Application Sales start -->
-                                            <div class="col-xl-6 col-md-12" >
-                                                <div class="card table-card">
-                                                    <div class="card-header">
-                                                        <h5>Expenses</h5> 
-                                                          <div class="col-sm-8 pull-right">
-                                                                <form method="post" >                                                                    
-                                                                    <input type="text" id="datepicker" value="01/01/2018 - 01/15/2018" class="form-control" />
-                                                                </form>
-                                                          </div>
-                                                    </div>
-                                                    <div class="card-block">
-                                                       <canvas id="myChart" ></canvas>
-                                                    </div>
-                                                </div>
-                                            </div>                                           
-                                
-
-
+                                     
                                         </div>
                                         <!-- [ page content ] end -->
                                     </div>
@@ -184,6 +142,15 @@
                             </div>
                         </div>
                     </div>
+                                        
+<%
+    }
+catch(Exception e)
+{
+       out.print(e);
+} 
+conn.close();
+%>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
@@ -251,4 +218,43 @@ $(function() {
     $( "#datepicker" ).datepicker();
   } );
 </script>
-            
+              
+
+
+
+<!--
+ 
+    <div class="col-xl-3 col-md-6">
+         <div class="pp-cont">
+             <div class="row align-items-center m-b-20">
+                 <div class="col-auto">
+                     <img src="images/b-s.png" style="height: 45px; width: 45px;" alt=""/>
+                 </div>
+
+                 <div class="col text-right">    
+                   <p class="m-b-0 text-center text-c-blue" style="font-weight: bold;"> Balance Sheet</p>
+
+                 </div>
+             </div>
+             <div class="row align-items-center m-b-15">
+                <div class="row">
+                 <div class="col-sm-6">
+                     <span class="m-b-0">Assets</span>                                                                            
+                 </div>
+                 <div class="col-sm-12 text-right ">
+                     <p class="m-b-0 text-c-blue" style="padding-left: 0px !important; ">$ 10,000,000,000,000,000</p>                                                                            
+                 </div>
+                </div>
+                 <div class="row">
+                 <div class="col-sm-6">
+                     <span class="m-b-0">Liabilities</span>                                                                            
+                 </div>
+                 <div class="col-sm-12 text-right ">
+                     <p class="m-b-0 text-c-blue" style="padding-left: 0px !important; padding-right: 0px !important;">$ 10,000,000,000,000,000</p>                                                                            
+                 </div>
+                </div>
+             </div>                                                                    
+         </div>
+     </div>
+
+-->
