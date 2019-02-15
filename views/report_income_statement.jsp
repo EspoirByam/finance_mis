@@ -88,22 +88,19 @@
                               </thead>
                               <tbody>
                                 <tr class="tr-h hover" onclick="detail()">
-                                  <td >Sales revenue</td>
-                                  <td class="td-style">1</td>
+                                  <td >Sales revenue</td>                                  
                                   <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h hover" onclick="costofgood()">
                                   <td >Cost of good sold</td>
-                                  <td class="td-style">2</td>
                                   <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h line hover" onclick="otherincom()">
                                   <td >Other Income</td>
-                                  <td class="td-style">3</td>
                                   <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h">
-                                      <td colspan="2" class="td-bold padd-bottom" > GROSS MARGIN</td>
+                                      <td colspan="1" class="td-bold padd-bottom" > GROSS MARGIN</td>
                                       <td class="td-style padd-bottom"><div class="text-right">0</div></td>
                                   </tr>
                                   <tr class="tr-h hover" onclick="salemarkerting()" >
@@ -111,41 +108,35 @@
                                   <br>
                               </div>
                                   <td >Sales and marketing</td>
-                                  <td class="td-style">5</td>
                                   <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h hover" onclick="researchdev()">
                                   <td >Research & Development</td>
-                                  <td class="td-style">6</td>
                                   <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h line hover" onclick="otherexpenses()">
                                   <td >Other expenses</td>
-                                  <td class="td-style">7</td>
                                   <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h">
-                                  <td colspan="2" class="td-bold">OPERATING EXPENSIVES</td>
+                                  <td colspan="1" class="td-bold">OPERATING EXPENSIVES</td>
                                   <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr class="tr-h"> 
-                                    <td colspan="2" class="td-bold padd"> INCOME FROM OPERATIONS </td>
+                                    <td colspan="1" class="td-bold padd"> INCOME FROM OPERATIONS </td>
                                     <td class="td-style"><div class="text-right">0</div></td>
                                 </tr>
                                 <tr>
                                     <td>  Interest income</td>
-                                    <td class="td-style">8</td> 
                                     <td class="td-style"><div class="text-right">0</div> </td> 
                                </tr>
                                <tr class="tr-h" > 
                                   <td> Income tax  </td>
-                                  <td class="td-style" >9</td>
                                   <td class="td-style"><div class="text-right">0</div></td>     
                                   </td> 
                                </tr>
                                <tr  style="text-decoration: underline;" class="tr-h"> 
                                    <td class="td-bold padd-top">NET INCOME</td>
-                                   <td class="td-style padd-top" >10</td>
                                    <td class="td-style padd-top"><div class="text-right">0</div></td>
                                </tr>
 
