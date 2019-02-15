@@ -60,60 +60,50 @@ public class income_statement extends HttpServlet {
                 par1.add(new Phrase(Chunk.NEWLINE));
                 document.add(par1); 
               
-                PdfPTable table = new PdfPTable(3);
+                PdfPTable table = new PdfPTable(2);
                 table.setWidthPercentage(75);
                 table.getDefaultCell().setBorder(0);
                 
                 //setting table's column width
-                float[] columnWidths = new float[]{50f, 10f, 10f};
+                float[] columnWidths = new float[]{50f, 20f};
                 table.setWidths(columnWidths);
                 
                                
                
                 table.addCell(new Paragraph("Sales revenue", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
-                table.addCell(new Paragraph("1", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
                 table.addCell(new Paragraph("0", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));                
                
                 table.addCell(new Paragraph("Cost of good sold", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
-                table.addCell(new Paragraph("2", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
                 table.addCell(new Paragraph("0", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));                
             
                 table.addCell(new Paragraph("Other Income", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
-                table.addCell(new Paragraph("3", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
                 table.addCell(new Paragraph("0", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
            
       // ----- Horizontal line in a table ------
-               PdfPCell underline = new PdfPCell(new Paragraph("----------------------------------------------------------------------------------------------------------------------------------------",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK)));
-               underline.setColspan(3);
+               PdfPCell underline = new PdfPCell(new Paragraph("------------------------------------------------------------------------------------------------------------",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK)));
+               underline.setColspan(2);
                underline.setBorder(0);
                table.addCell(underline);               
        // ----- End of hr line ----------
                 
-                PdfPCell cell11 = new PdfPCell(new Paragraph("GROSS MARGIN",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK)));
-                PdfPCell cell12 = new PdfPCell(new Paragraph("",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK)));  
+                PdfPCell cell11 = new PdfPCell(new Paragraph("GROSS MARGIN",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK))); 
                 PdfPCell cell13 = new PdfPCell(new Paragraph("0",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK)));
                
                 cell11.setBorder(0);
-                cell12.setBorder(0);
                 cell13.setBorder(0);
                 table.addCell(cell11);
-                table.addCell(cell12);
                 table.addCell(cell13); 
                 
        // ----- These 4 lines help to put a blank row in this table ------
                 table.addCell(new Paragraph("\n", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
                 table.addCell(new Paragraph("\n", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
-                table.addCell(new Paragraph("\n", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
        // ----- End of blank row ----------
                 
                 table.addCell(new Paragraph("Sales and marketing", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
-                table.addCell(new Paragraph("4", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK))); 
                 table.addCell(new Paragraph("0", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
                 table.addCell(new Paragraph("Research & Development", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
-                table.addCell(new Paragraph("5", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK))); 
                 table.addCell(new Paragraph("0", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
                 table.addCell(new Paragraph("Other expenses", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
-                table.addCell(new Paragraph("6", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK))); 
                 table.addCell(new Paragraph("0", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
                 
       // ----- Horizontal line in a table ------               
@@ -121,61 +111,47 @@ public class income_statement extends HttpServlet {
        // ----- End of hr line ----------
                
                 PdfPCell cel1 = new PdfPCell(new Paragraph("OPERATING EXPENSIVES",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK)));
-                PdfPCell cel2 = new PdfPCell(new Paragraph("",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK))); 
                 PdfPCell cel3 = new PdfPCell(new Paragraph("0",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK)));
                
                 cel1.setBorder(0);
-                cel2.setBorder(0);
                 cel3.setBorder(0);
                 table.addCell(cel1);
-                table.addCell(cel2);
                 table.addCell(cel3); 
        
        // ----- These 4 lines help to put a blank row in this table ------
                 table.addCell(new Paragraph("\n", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
                 table.addCell(new Paragraph("\n", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
-                table.addCell(new Paragraph("\n", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
        // ----- End of blank row ----------
                 
                 PdfPCell cell4 = new PdfPCell(new Paragraph("INCOME FROM OPERATIONS",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK)));
-                PdfPCell cell5 = new PdfPCell(new Paragraph("",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK))); 
                 PdfPCell cell7 = new PdfPCell(new Paragraph("0",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK)));
                
                 cell4.setBorder(0);
-                cell5.setBorder(0);
                 cell7.setBorder(0);
                 table.addCell(cell4);
-                table.addCell(cell5);
                 table.addCell(cell7); 
     
        // ----- These 3 lines help to put a blank row in this table ------
                 table.addCell(new Paragraph("\n", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
                 table.addCell(new Paragraph("\n", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
-                table.addCell(new Paragraph("\n", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
        // ----- End of blank row ----------    
                 
                 table.addCell(new Paragraph("Interest income", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
-                table.addCell(new Paragraph("7", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK))); 
                 table.addCell(new Paragraph("0", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
                 table.addCell(new Paragraph("Income tax", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
-                table.addCell(new Paragraph("8", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK))); 
                 table.addCell(new Paragraph("0", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
                 
        // ----- These 3 lines help to put a blank row in this table ------
                 table.addCell(new Paragraph("\n", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
                 table.addCell(new Paragraph("\n", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
-                table.addCell(new Paragraph("\n", FontFactory.getFont("Aroma", 7, Font.NORMAL, BaseColor.BLACK)));
        // ----- End of blank row ---------- 
                 
                 PdfPCell cellT = new PdfPCell(new Paragraph("NET INCOME",FontFactory.getFont("Aroma", 8, Font.UNDERLINE, BaseColor.BLACK)));
-                PdfPCell cellT1 = new PdfPCell(new Paragraph("",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK))); 
                 PdfPCell cellT2 = new PdfPCell(new Paragraph("0",FontFactory.getFont("Aroma", 8, Font.BOLD, BaseColor.BLACK)));
                
                 cellT.setBorder(0);
-                cellT1.setBorder(0);
                 cellT2.setBorder(0);
                 table.addCell(cellT);
-                table.addCell(cellT1);
                 table.addCell(cellT2); 
                 
                 document.add(table);
@@ -184,9 +160,7 @@ public class income_statement extends HttpServlet {
             
             }catch(Exception ex){ex.getMessage();}
             
-            
-            
-            
+           
         } finally{
             
             out.close();
