@@ -63,7 +63,7 @@ public class income_statement extends HttpServlet {
                 PdfPTable table = new PdfPTable(2);
                 table.setWidthPercentage(75);
                 table.getDefaultCell().setBorder(0);
-                
+                               
                 //setting table's column width
                 float[] columnWidths = new float[]{50f, 20f};
                 table.setWidths(columnWidths);
