@@ -70,17 +70,37 @@ try
                                                          <div class="row">
 
                                                              <div class="col-xl-6 col-md-6">
-                                                                 <h6>Total Payables</h6>
-                                                                 <h5 class="m-b-30 f-w-700 text-c-blue"> $ 4,569,000</h5>
+                                                                                                                                
+                                                                 <div class="row">
+                                                                     <div class="col-sm-6">
+                                                                          <h6>Initial Payables</h6> 
+                                                                        <h5 class="m-b-30 f-w-700 text-c-yellow"> $ 000.000</h5>
+                                                                      </div>
+                                                                     
+                                                                     <div class="col-sm-6">
+                                                                         <h6 class="text-right">Current Payables</h6>
+                                                                        <h5 class="m-b-30 f-w-700 text-c-blue text-right"> $ 000.000</h5>
+                                                                      </div>
+                                                                  </div>
+                                                                 
                                                                  <div class="progress">
-                                                                     <div class="progress-bar bg-c-blue" style="width:45%"></div>
+                                                                     <div class="progress-bar bg-c-blue" style="width:25%"></div>
                                                                  </div>
                                                              </div>
                                                              <div class="col-xl-6 col-md-6">
-                                                                 <h6>Total Receivables</h6>
-                                                                 <h5 class="m-b-30 f-w-700 text-c-green">$ 89,000,000</h5>
+                                                                  <div class="row">
+                                                                     <div class="col-sm-6">
+                                                                          <h6>Initial Receivables</h6> 
+                                                                        <h5 class="m-b-30 f-w-700 text-c-yellow"> $ 000.000</h5>
+                                                                      </div>
+                                                                     
+                                                                     <div class="col-sm-6">
+                                                                         <h6 class="text-right">Current Receivables</h6>
+                                                                        <h5 class="m-b-30 f-w-700 text-c-green text-right"> $ 000.000</h5>
+                                                                      </div>
+                                                                  </div>
                                                                  <div class="progress">
-                                                                     <div class="progress-bar bg-c-green" style="width:55%"></div>
+                                                                     <div class="progress-bar bg-c-green" style="width:35%"></div>
                                                                  </div>
                                                              </div>
 
@@ -88,11 +108,11 @@ try
                                                      </div>
                                                  </div>
                                              </div>
-                                             <!-- Project statustic end -->
+                                             <!-- Project statistic end -->
                                              
                                             <!-- Threshold plugin start -->
                                             <div class="col-xl-12 col-md-12">
-                                                <div class="card" style="height: 70%;">
+                                                <div class="card">
                                                     <div class="card-header">
                                                         <h5>Cash Flow</h5>
                                                         <div class="col-sm-4 pull-right">
@@ -118,13 +138,13 @@ try
                                                         <div class="card table-card" style="margin-top: 35px;">
                                                             <div class="card-block"  >
                                                                 <div class="text-right">
-                                                                    <span style="font-size: 13px;" class="text-disable">Cash as on 29.01.19</span><br>
+                                                                    <span style="font-size: 13px;" class="text-disable">Beginning Cash Balance</span><br>
                                                                     <span style="font-size: 14px; font-weight: bold;" class="text-disable text-right">$ 400,999,000</span> <br><br>
                                                                     <span style="font-size: 13px;" class="text-success">Incoming</span><br>
                                                                     <span style="font-size: 14px; font-weight: bold;" class="text-disable text-right">$ 400,999,000</span><br><br>
                                                                     <span style="font-size: 13px;" class="text-danger">Outgoing</span><br>
                                                                     <span style="font-size: 14px; font-weight: bold;" class="text-disable text-right">$ 400,999,000</span><br><br>
-                                                                    <span style="font-size: 13px;" class="text-info">Cash as on 08.02.19</span><br>
+                                                                    <span style="font-size: 13px;" class="text-info">Current Cash Balance</span><br>
                                                                     <span style="font-size: 14px; font-weight: bold;" class="text-disable text-right">$ 400,999,000</span><br>
                                                                 </div>
                                                             </div>
